@@ -9,20 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        green: {
-          DEFAULT: '#00A86B',
-          dark: '#007A4D',
-          deep: '#004D31',
-          light: '#E8F7F1',
+        brand: {
+          DEFAULT: '#6C4FE0',
+          dark: '#583CBE',
+          light: '#EAE6FF',
+          bg: '#F8F9FA',
         },
-        gold: {
-          DEFAULT: '#F4A01C',
-          deep: '#C17E10',
-          light: '#FEF3DC',
-        },
-        dark: {
-          DEFAULT: '#0A1F14',
-          2: '#132B1C',
+        whatsapp: {
+          DEFAULT: '#25D366',
+          dark: '#1EBE5A',
+          light: '#DCF8C6',
         },
       },
     },
