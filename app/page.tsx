@@ -57,11 +57,10 @@ export default function HomePage() {
                 Lancer ma boutique gratuitement <FiArrowRight className="text-lg" />
               </Link>
               <Link
-                href="/wax-elegance"
-                target="_blank"
+                href="/irashop"
                 className="w-full sm:w-auto border border-gray-200 text-gray-700 font-bold text-base px-8 py-4 rounded-xl hover:bg-gray-50 transition flex items-center justify-center gap-2"
               >
-                <FiShoppingBag className="text-brand" /> Voir une boutique exemple
+                <FiShoppingBag className="text-brand" /> Voir la boutique Irashop
               </Link>
             </div>
 
