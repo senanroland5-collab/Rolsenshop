@@ -9,8 +9,8 @@ export default function HomePage() {
         {/* NAVBAR */}
         <nav className="bg-white border-b border-gray-100 sticky top-0 z-50 px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="font-extrabold text-2xl text-gray-900">
-              Vendor<span className="text-brand">Hub</span>
+            <span className="font-extrabold text-2xl text-gray-900 text-brand">
+              Rolsenshop
             </span>
             <span className="bg-brand-light text-brand text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
               Afrique de l&apos;Ouest
@@ -120,7 +120,7 @@ export default function HomePage() {
               </div>
               <h3 className="font-bold text-gray-900 text-lg">Croissance Virale</h3>
               <p className="text-xs text-gray-500 leading-relaxed">
-                Chaque vitrine inclut le badge &quot;Propulsé par VendorHub&quot; pour attirer de nouveaux commerçants vers votre plateforme.
+                Chaque vitrine inclut le badge &quot;Propulsé par Rolsenshop&quot; pour attirer de nouveaux commerçants vers votre plateforme.
               </p>
             </div>
           </div>
@@ -130,10 +130,10 @@ export default function HomePage() {
       {/* FOOTER */}
       <footer className="bg-white border-t border-gray-100 py-8 px-6 text-center text-xs text-gray-500">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="font-extrabold text-gray-900 text-base">
-            Vendor<span className="text-brand">Hub</span>
+          <div className="font-extrabold text-gray-900 text-base text-brand">
+            Rolsenshop
           </div>
-          <p>© {new Date().getFullYear()} VendorHub — Solution de catalogue pour commerçants d&apos;Afrique de l&apos;Ouest.</p>
+          <p>© {new Date().getFullYear()} Rolsenshop — Solution de catalogue pour commerçants d&apos;Afrique de l&apos;Ouest.</p>
           <div className="flex gap-4 font-semibold text-gray-600">
             <Link href="/auth/login" className="hover:text-brand">Connexion</Link>
             <Link href="/auth/register" className="hover:text-brand">Inscription</Link>
