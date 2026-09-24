@@ -18,24 +18,6 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
             className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
           />
 
-          {/* Badges Overlay */}
-          <div className="absolute top-3 left-3 flex flex-col gap-1.5 items-start">
-            {product.badge === 'best_seller' && (
-              <span className="bg-amber-500 text-white font-black text-[10px] uppercase px-2.5 py-1 rounded-full shadow-xs">
-                🔥 Best Seller
-              </span>
-            )}
-            {product.badge === 'new' && (
-              <span className="bg-brand text-white font-black text-[10px] uppercase px-2.5 py-1 rounded-full shadow-xs">
-                ✨ Nouveau
-              </span>
-            )}
-            {product.isLimitedStock && (
-              <span className="bg-red-500 text-white font-black text-[10px] uppercase px-2.5 py-1 rounded-full shadow-xs">
-                ⚠️ Stock Limité {product.stockCount ? `(${product.stockCount})` : ''}
-              </span>
-            )}
-          </div>
         </div>
 
         {/* Info Content */}
