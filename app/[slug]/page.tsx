@@ -141,10 +141,10 @@ export default function ShopPage() {
           <div className="max-w-6xl mx-auto px-4">
             <div className="bg-brand-light/40 border border-brand/10 rounded-2xl p-4 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
-                <h2 className="text-lg font-bold text-gray-900 mt-2">
-                  Commandez en 1 clic et finalisez sur WhatsApp
+                <h2 className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight transition duration-200 hover:text-brand">
+                  Commandez en un clic et finalisez sur WhatsApp
                 </h2>
-                <p className="text-xs text-gray-600 mt-1 max-w-xl">
+                <p className="text-sm text-gray-600 mt-1.5 max-w-xl leading-relaxed font-medium">
                   Sélectionnez vos articles ci-dessous, renseignez vos informations de livraison et envoyez votre commande directement au vendeur par message pré-rempli.
                 </p>
               </div>
