@@ -13,9 +13,10 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
         {/* Image Container */}
         <div className="relative aspect-square overflow-hidden bg-gray-50">
           <img
-            src={product.photoUrl}
-            alt={product.name}
+            src={product.photoUrl || '/file.svg'}
+            alt={`Photo de l'article ${product.name} - ${product.price} FCFA sur Rolsenshop`}
             className="w-full h-full object-cover group-hover:scale-108 transition duration-500 ease-out"
+            loading="lazy"
           />
         </div>
 

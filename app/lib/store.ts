@@ -6,7 +6,7 @@ export const MOCK_VENDOR: Vendor = {
   storeName: 'Irashop',
   slug: 'irashop',
   whatsappNumber: '22964404410',
-  description: 'Boutique de mode et articles de qualité en Bénin. Commandez facilement sur WhatsApp.',
+  description: 'Boutique de mode et articles de qualité au Bénin. Commandez facilement sur WhatsApp.',
   logoUrl: '/shops/irashop/irashop-prod-1.jpg',
   createdAt: new Date().toISOString(),
   subscriptionStatus: 'active',

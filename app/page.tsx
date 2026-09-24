@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { FiShoppingBag, FiArrowRight, FiCheckCircle, FiStar, FiZap, FiPhoneCall } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
+import CookieBanner from '@/app/components/CookieBanner';
 
 export default function HomePage() {
   return (
@@ -130,12 +131,17 @@ export default function HomePage() {
             Rolsenshop
           </div>
           <p>© {new Date().getFullYear()} Rolsenshop — Solution de catalogue pour commerçants d&apos;Afrique de l&apos;Ouest.</p>
-          <div className="flex gap-4 font-semibold text-gray-600">
-            <Link href="/auth/login" className="hover:text-brand">Connexion</Link>
-            <Link href="/auth/register" className="hover:text-brand">Inscription</Link>
+          <div className="flex flex-wrap gap-4 font-semibold text-gray-600 justify-center">
+            <Link href="/privacy" className="hover:text-brand">Confidentialité</Link>
+            <Link href="/terms" className="hover:text-brand">CGU</Link>
+            <Link href="/cookies" className="hover:text-brand">Cookies</Link>
+            <Link href="/refunds" className="hover:text-brand">Remboursement</Link>
+            <Link href="/mentions-legales" className="hover:text-brand">Mentions Légales</Link>
           </div>
         </div>
       </footer>
+
+      <CookieBanner />
     </main>
   );
 }
