@@ -40,7 +40,7 @@ export default function LoginPage() {
         <div className="text-center">
           <Link href="/" className="inline-block">
             <span className="text-3xl font-bold text-gray-900">
-              Vendor<span className="text-brand">Hub</span>
+              Rolsen<span className="text-brand">shop</span>
             </span>
           </Link>
           <h2 className="mt-4 text-2xl font-extrabold text-gray-900">

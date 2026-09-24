@@ -141,9 +141,6 @@ export default function ShopPage() {
           <div className="max-w-6xl mx-auto px-4">
             <div className="bg-brand-light/40 border border-brand/10 rounded-2xl p-4 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-brand bg-white px-2.5 py-1 rounded-full border border-brand/20">
-                  Vitrine WhatsApp Officielle
-                </span>
                 <h2 className="text-lg font-bold text-gray-900 mt-2">
                   Commandez en 1 clic et finalisez sur WhatsApp
                 </h2>

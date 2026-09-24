@@ -36,10 +36,6 @@ export default function HomePage() {
         {/* HERO SECTION */}
         <section className="relative overflow-hidden bg-white border-b border-gray-100 py-16 sm:py-24 px-6 text-center">
           <div className="max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-brand-light border border-brand/20 text-brand px-4 py-1.5 rounded-full text-xs font-bold mb-6">
-              <span className="w-2 h-2 bg-brand rounded-full animate-pulse" />
-              🌍 Solution N°1 de catalogues WhatsApp en Afrique de l&apos;Ouest
-            </div>
 
             <h1 className="text-4xl sm:text-6xl font-black text-gray-900 leading-tight mb-6">
               Créez votre catalogue produits & recevez des commandes <span className="text-brand">WhatsApp</span>

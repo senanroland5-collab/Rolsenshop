@@ -17,7 +17,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_1",
     "vendorUid": "vendor_irashop",
-    "name": "Robe / Pagne Wax Irashop #1",
+    "name": "Robe / Pagne Vintage Irashop #1",
     "price": 3500,
     "currency": "FCFA",
     "description": "Article de qualité supérieure sélectionné par Irashop. Contact direct: +229 64 40 44 10.",
@@ -31,7 +31,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_2",
     "vendorUid": "vendor_irashop",
-    "name": "Robe / Pagne Wax Irashop #2",
+    "name": "Robe / Pagne Semi-Vintage Irashop #2",
     "price": 3500,
     "currency": "FCFA",
     "description": "Article de qualité supérieure sélectionné par Irashop. Contact direct: +229 64 40 44 10.",
@@ -45,7 +45,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_3",
     "vendorUid": "vendor_irashop",
-    "name": "Robe / Pagne Wax Irashop #3",
+    "name": "Robe / Pagne Vintage Irashop #3",
     "price": 3500,
     "currency": "FCFA",
     "description": "Article de qualité supérieure sélectionné par Irashop. Contact direct: +229 64 40 44 10.",
@@ -59,7 +59,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_4",
     "vendorUid": "vendor_irashop",
-    "name": "Robe / Pagne Wax Irashop #4",
+    "name": "Robe / Pagne Semi-Vintage Irashop #4",
     "price": 3500,
     "currency": "FCFA",
     "description": "Article de qualité supérieure sélectionné par Irashop. Contact direct: +229 64 40 44 10.",
@@ -74,7 +74,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_5",
     "vendorUid": "vendor_irashop",
-    "name": "Robe / Pagne Wax Irashop #5",
+    "name": "Robe / Pagne Vintage Irashop #5",
     "price": 3500,
     "currency": "FCFA",
     "description": "Article de qualité supérieure sélectionné par Irashop. Contact direct: +229 64 40 44 10.",
@@ -88,7 +88,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_6",
     "vendorUid": "vendor_irashop",
-    "name": "Robe / Pagne Wax Irashop #6",
+    "name": "Robe / Pagne Semi-Vintage Irashop #6",
     "price": 3500,
     "currency": "FCFA",
     "description": "Article de qualité supérieure sélectionné par Irashop. Contact direct: +229 64 40 44 10.",
@@ -102,7 +102,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_7",
     "vendorUid": "vendor_irashop",
-    "name": "Robe / Pagne Wax Irashop #7",
+    "name": "Robe / Pagne Vintage Irashop #7",
     "price": 3500,
     "currency": "FCFA",
     "description": "Article de qualité supérieure sélectionné par Irashop. Contact direct: +229 64 40 44 10.",
@@ -116,7 +116,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_8",
     "vendorUid": "vendor_irashop",
-    "name": "Robe / Pagne Wax Irashop #8",
+    "name": "Robe / Pagne Semi-Vintage Irashop #8",
     "price": 3500,
     "currency": "FCFA",
     "description": "Article de qualité supérieure sélectionné par Irashop. Contact direct: +229 64 40 44 10.",
@@ -131,7 +131,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_9",
     "vendorUid": "vendor_irashop",
-    "name": "Robe / Pagne Wax Irashop #9",
+    "name": "Robe / Pagne Vintage Irashop #9",
     "price": 3500,
     "currency": "FCFA",
     "description": "Article de qualité supérieure sélectionné par Irashop. Contact direct: +229 64 40 44 10.",
