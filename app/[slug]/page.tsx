@@ -163,10 +163,26 @@ export default function ShopPage() {
 
         {/* Product Catalog Grid */}
         <main className="max-w-6xl mx-auto px-4 mb-16">
-          <div className="flex justify-between items-center mb-6">
-            <h3 className="text-lg font-extrabold text-gray-900">
-              Produits disponibles
-            </h3>
+          <div className="bg-white rounded-3xl p-6 border border-gray-100 shadow-xs mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-2xl bg-brand/10 text-brand flex items-center justify-center text-2xl shadow-xs shrink-0">
+                🛍️
+              </div>
+              <div>
+                <h3 className="font-heading text-xl sm:text-2xl font-black text-gray-900 tracking-tight">
+                  Sélection Officielle de la Boutique
+                </h3>
+                <p className="text-xs text-gray-500 font-medium mt-0.5">
+                  Parcourez nos tissus & créations d&apos;exception et commandez directement sur WhatsApp
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 bg-gray-50 p-1.5 rounded-2xl border border-gray-100 text-xs font-bold text-gray-600 self-stretch sm:self-auto justify-center">
+              <span className="bg-white px-3 py-1.5 rounded-xl shadow-2xs text-brand font-black">Tous ({products.length})</span>
+              <span className="px-3 py-1.5 rounded-xl hover:text-gray-900 cursor-pointer transition">Vintage</span>
+              <span className="px-3 py-1.5 rounded-xl hover:text-gray-900 cursor-pointer transition">Semi-Vintage</span>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
