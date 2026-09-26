@@ -10,11 +10,12 @@ export default function PoweredByBadge() {
 
         <Link
           href="/auth/register"
-          className="inline-flex items-center gap-1.5 bg-brand-light text-brand font-bold px-3.5 py-1.5 rounded-full hover:bg-brand/15 transition shadow-2xs"
+          className="inline-flex items-center gap-2 bg-white border border-gray-200 text-gray-800 font-bold px-4 py-1.5 rounded-full hover:bg-gray-50 transition shadow-2xs"
         >
-          <span>Propulsé par Rolsenshop</span>
+          <img src="/logo.png" alt="RolsenShop" className="h-5 w-auto object-contain" />
+          <span className="text-xs">Propulsé par RolsenShop</span>
           <span className="text-gray-400 font-normal">| Créer ma boutique</span>
-          <FiArrowUpRight className="text-sm" />
+          <FiArrowUpRight className="text-sm text-brand" />
         </Link>
       </div>
     </footer>

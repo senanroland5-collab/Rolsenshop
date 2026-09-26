@@ -134,11 +134,8 @@ export default function DashboardPage() {
       <header className="bg-white border-b border-gray-200 sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Link href="/" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center bg-white p-1 rounded-xl shadow-2xs border border-gray-100">
               <img src="/logo.png" alt="RolsenShop Logo" className="h-8 w-auto object-contain" />
-              <span className="text-xl font-black text-brand font-heading">
-                RolsenShop
-              </span>
             </Link>
             <span className="bg-brand-light text-brand text-xs font-bold px-2.5 py-1 rounded-full">
               Espace Vendeur

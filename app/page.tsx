@@ -10,13 +10,10 @@ export default function HomePage() {
         {/* NAVBAR */}
         <nav className="bg-white border-b border-gray-100 sticky top-0 z-50 px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Link href="/" className="flex items-center gap-2">
-              <img src="/logo.png" alt="RolsenShop Logo" className="h-9 w-auto object-contain" />
-              <span className="font-heading font-black text-2xl text-brand">
-                RolsenShop
-              </span>
+            <Link href="/" className="flex items-center bg-white p-1 rounded-xl shadow-2xs border border-gray-100">
+              <img src="/logo.png" alt="RolsenShop Logo" className="h-10 w-auto object-contain" />
             </Link>
-            <span className="bg-brand-light text-brand text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider hidden sm:inline-block">
+            <span className="bg-brand-light text-brand text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider hidden sm:inline-block">
               Afrique de l&apos;Ouest
             </span>
           </div>
@@ -130,9 +127,9 @@ export default function HomePage() {
       {/* FOOTER */}
       <footer className="bg-white border-t border-gray-100 py-8 px-6 text-center text-xs text-gray-500">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="font-extrabold text-gray-900 text-base text-brand">
-            Rolsenshop
-          </div>
+          <Link href="/" className="bg-white p-1 rounded-xl border border-gray-100 inline-block">
+            <img src="/logo.png" alt="RolsenShop Logo" className="h-9 w-auto object-contain" />
+          </Link>
           <p>© {new Date().getFullYear()} Rolsenshop — Solution de catalogue pour commerçants d&apos;Afrique de l&apos;Ouest.</p>
           <div className="flex flex-wrap gap-4 font-semibold text-gray-600 justify-center">
             <Link href="/privacy" className="hover:text-brand">Confidentialité</Link>
