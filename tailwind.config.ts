@@ -14,11 +14,14 @@ const config: Config = {
       },
       colors: {
         brand: {
-          DEFAULT: '#6C4FE0',
-          dark: '#2D2A26',
-          light: '#EAE6FF',
-          bg: '#FDFBF7',
-          cta: '#D97706',
+          DEFAULT: '#0F3E68',  // Deep Navy Blue from RolsenShop logo
+          dark: '#0A2A47',     // Dark Navy Blue
+          navy: '#0F3E68',     // Deep Navy Blue alias
+          cyan: '#176D86',     // Cyan/Teal accent from logo loop
+          light: '#EBF3FA',    // Soft Navy Blue tint
+          bg: '#F8FAFC',       // Clean light neutral background
+          cta: '#EE7019',      // Vibrant Orange from RolsenShop text/cart
+          'cta-hover': '#D85F0E', // Darker Orange hover
         },
         whatsapp: {
           DEFAULT: '#25D366',

@@ -163,7 +163,7 @@ export default function DashboardPage() {
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
         {/* Subscription Status Banner */}
-        <div className="mb-6 bg-gradient-to-r from-brand to-purple-700 rounded-2xl p-5 text-white shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div className="mb-6 bg-gradient-to-r from-brand via-brand-cyan to-brand-navy rounded-2xl p-5 text-white shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center text-xl">
               <FiClock />
@@ -182,7 +182,7 @@ export default function DashboardPage() {
           </div>
           <button
             onClick={() => alert("Option d'abonnement bientôt disponible ! Contactez le support.")}
-            className="bg-white text-brand font-bold text-sm px-5 py-2.5 rounded-xl hover:bg-gray-100 transition shrink-0"
+            className="bg-white text-brand font-bold text-sm px-5 py-2.5 rounded-xl hover:bg-gray-100 transition shrink-0 shadow-xs"
           >
             Activer l&apos;abonnement pro
           </button>
