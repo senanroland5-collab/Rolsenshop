@@ -35,9 +35,25 @@ export default function ShopPage() {
     }
     return MOCK_PRODUCTS;
   });
+
+  const [selectedCategory, setSelectedCategory] = useState<'all' | 'vintage' | 'semi-vintage'>('all');
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+
+  // Filter products by category tab
+  const filteredProducts = products.filter((p) => {
+    if (selectedCategory === 'vintage') {
+      return p.name.toLowerCase().includes('vintage') && !p.name.toLowerCase().includes('semi-vintage');
+    }
+    if (selectedCategory === 'semi-vintage') {
+      return p.name.toLowerCase().includes('semi-vintage');
+    }
+    return true;
+  });
+
+  const vintageCount = products.filter((p) => p.name.toLowerCase().includes('vintage') && !p.name.toLowerCase().includes('semi-vintage')).length;
+  const semiVintageCount = products.filter((p) => p.name.toLowerCase().includes('semi-vintage')).length;
 
   // Cart helper functions
   const handleAddToCart = (product: Product) => {
@@ -163,14 +179,18 @@ export default function ShopPage() {
 
         {/* Product Catalog Grid */}
         <main className="max-w-6xl mx-auto px-4 mb-16">
-          <div className="bg-white rounded-3xl p-6 border border-gray-100 shadow-xs mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div className="flex items-center gap-3.5">
-              <div className="w-12 h-12 rounded-2xl bg-brand/10 text-brand flex items-center justify-center text-2xl shadow-xs shrink-0">
+          <div className="relative overflow-hidden bg-gradient-to-r from-white via-brand-light/30 to-white rounded-3xl p-6 border border-gray-100 shadow-sm mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            {/* Animated Glow Dot */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-brand/10 rounded-full blur-2xl pointer-events-none animate-pulse"></div>
+
+            <div className="flex items-center gap-3.5 relative z-10">
+              <div className="w-12 h-12 rounded-2xl bg-brand text-white flex items-center justify-center text-2xl shadow-md shrink-0 transition-transform duration-300 hover:scale-110">
                 🛍️
               </div>
               <div>
-                <h3 className="font-heading text-xl sm:text-2xl font-black text-gray-900 tracking-tight">
-                  Sélection Officielle de la Boutique
+                <h3 className="font-heading text-xl sm:text-2xl font-black text-gray-900 tracking-tight flex items-center gap-2">
+                  <span>Sélection Officielle de la Boutique</span>
+                  <span className="w-2 h-2 rounded-full bg-brand animate-ping inline-block"></span>
                 </h3>
                 <p className="text-xs text-gray-500 font-medium mt-0.5">
                   Parcourez nos tissus & créations d&apos;exception et commandez directement sur WhatsApp
@@ -178,23 +198,68 @@ export default function ShopPage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-2 bg-gray-50 p-1.5 rounded-2xl border border-gray-100 text-xs font-bold text-gray-600 self-stretch sm:self-auto justify-center">
-              <span className="bg-white px-3 py-1.5 rounded-xl shadow-2xs text-brand font-black">Tous ({products.length})</span>
-              <span className="px-3 py-1.5 rounded-xl hover:text-gray-900 cursor-pointer transition">Vintage</span>
-              <span className="px-3 py-1.5 rounded-xl hover:text-gray-900 cursor-pointer transition">Semi-Vintage</span>
+            {/* Interactive Category Tabs */}
+            <div className="flex items-center gap-1.5 bg-gray-100/80 p-1.5 rounded-2xl border border-gray-200/60 text-xs font-bold self-stretch sm:self-auto justify-center relative z-10">
+              <button
+                onClick={() => setSelectedCategory('all')}
+                className={`px-3.5 py-2 rounded-xl transition duration-200 flex items-center gap-1.5 ${
+                  selectedCategory === 'all'
+                    ? 'bg-brand text-white shadow-xs font-black scale-102'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
+                }`}
+              >
+                <span>Tous</span>
+                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${selectedCategory === 'all' ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-700'}`}>
+                  {products.length}
+                </span>
+              </button>
+
+              <button
+                onClick={() => setSelectedCategory('vintage')}
+                className={`px-3.5 py-2 rounded-xl transition duration-200 flex items-center gap-1.5 ${
+                  selectedCategory === 'vintage'
+                    ? 'bg-brand text-white shadow-xs font-black scale-102'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
+                }`}
+              >
+                <span>Vintage</span>
+                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${selectedCategory === 'vintage' ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-700'}`}>
+                  {vintageCount}
+                </span>
+              </button>
+
+              <button
+                onClick={() => setSelectedCategory('semi-vintage')}
+                className={`px-3.5 py-2 rounded-xl transition duration-200 flex items-center gap-1.5 ${
+                  selectedCategory === 'semi-vintage'
+                    ? 'bg-brand text-white shadow-xs font-black scale-102'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
+                }`}
+              >
+                <span>Semi-Vintage</span>
+                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${selectedCategory === 'semi-vintage' ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-700'}`}>
+                  {semiVintageCount}
+                </span>
+              </button>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {products.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onAddToCart={handleAddToCart}
-                vendorSlug={vendor.slug}
-              />
-            ))}
-          </div>
+          {filteredProducts.length === 0 ? (
+            <div className="bg-white rounded-2xl p-12 text-center text-gray-500 border border-gray-100">
+              Aucun article ne correspond à cette catégorie pour le moment.
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {filteredProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  onAddToCart={handleAddToCart}
+                  vendorSlug={vendor.slug}
+                />
+              ))}
+            </div>
+          )}
         </main>
       </div>
 
