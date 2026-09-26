@@ -3,13 +3,14 @@
 import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { FiMessageCircle, FiShoppingBag, FiInfo, FiCheck } from 'react-icons/fi';
+import { FiMessageCircle, FiShoppingBag, FiInfo, FiCheck, FiMapPin, FiStar } from 'react-icons/fi';
 import { MOCK_VENDOR, MOCK_PRODUCTS } from '@/app/lib/store';
 import { Vendor, Product, CartItem } from '@/app/lib/types';
 import ProductCard from '@/app/components/ProductCard';
 import CartDrawer from '@/app/components/CartDrawer';
 import CheckoutModal from '@/app/components/CheckoutModal';
 import PoweredByBadge from '@/app/components/PoweredByBadge';
+import VendorRatingModal from '@/app/components/VendorRatingModal';
 
 export default function ShopPage() {
   const params = useParams();
@@ -40,6 +41,7 @@ export default function ShopPage() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [isRatingModalOpen, setIsRatingModalOpen] = useState(false);
 
   // Filter products by category tab
   const filteredProducts = products.filter((p) => {
@@ -97,28 +99,48 @@ export default function ShopPage() {
         <header className="bg-white border-b border-gray-100 sticky top-0 z-30 shadow-xs">
           <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              {vendor.logoUrl ? (
-                <img
-                  src={vendor.logoUrl}
-                  alt={vendor.storeName}
-                  className="w-12 h-12 rounded-full object-cover border-2 border-brand/20 shadow-xs"
-                />
-              ) : (
-                <div className="w-12 h-12 rounded-full bg-brand text-white font-bold text-xl flex items-center justify-center">
-                  {vendor.storeName.charAt(0)}
+              <button
+                onClick={() => setIsRatingModalOpen(true)}
+                className="group flex items-center gap-3 text-left focus:outline-none"
+                title="Cliquer pour évaluer ce vendeur"
+              >
+                {vendor.logoUrl ? (
+                  <img
+                    src={vendor.logoUrl}
+                    alt={vendor.storeName}
+                    className="w-12 h-12 rounded-full object-cover border-2 border-brand/20 shadow-xs group-hover:scale-105 transition"
+                  />
+                ) : (
+                  <div className="w-12 h-12 rounded-full bg-brand text-white font-bold text-xl flex items-center justify-center group-hover:scale-105 transition">
+                    {vendor.storeName.charAt(0)}
+                  </div>
+                )}
+                <div>
+                  <div className="flex items-center gap-2">
+                    <h1 className="text-xl font-extrabold text-gray-900 leading-tight group-hover:text-brand transition">
+                      {vendor.storeName}
+                    </h1>
+                    <span className="inline-flex items-center gap-1 bg-amber-50 text-amber-800 text-[11px] font-bold px-2 py-0.5 rounded-full border border-amber-200/60">
+                      <FiStar className="fill-amber-500 text-amber-500" /> 4.9 (28 avis)
+                    </span>
+                  </div>
+                  <p className="text-xs text-gray-500 line-clamp-1 max-w-md">
+                    {vendor.description}
+                  </p>
                 </div>
-              )}
-              <div>
-                <h1 className="text-xl font-extrabold text-gray-900 leading-tight">
-                  {vendor.storeName}
-                </h1>
-                <p className="text-xs text-gray-500 line-clamp-1 max-w-md">
-                  {vendor.description}
-                </p>
-              </div>
+              </button>
             </div>
 
             <div className="flex items-center gap-3">
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(vendor.storeName + ' Cotonou Bénin')}`}
+                target="_blank"
+                rel="noreferrer"
+                className="hidden md:inline-flex items-center gap-1.5 text-xs font-bold text-gray-700 bg-gray-100 hover:bg-gray-200 px-3.5 py-2 rounded-xl transition"
+              >
+                <FiMapPin className="text-red-500 text-sm" /> Google Maps
+              </a>
+
               <a
                 href={`https://wa.me/${vendor.whatsappNumber}`}
                 target="_blank"
@@ -280,6 +302,12 @@ export default function ShopPage() {
         onClose={() => setIsCheckoutOpen(false)}
         cartItems={cart}
         vendor={vendor}
+      />
+
+      <VendorRatingModal
+        isOpen={isRatingModalOpen}
+        onClose={() => setIsRatingModalOpen(false)}
+        vendorName={vendor.storeName}
       />
 
       {/* Viral Powered By Badge */}

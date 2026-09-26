@@ -9,11 +9,14 @@ export default function HomePage() {
       <div>
         {/* NAVBAR */}
         <nav className="bg-white border-b border-gray-100 sticky top-0 z-50 px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="font-extrabold text-2xl text-gray-900 text-brand">
-              Rolsenshop
-            </span>
-            <span className="bg-brand-light text-brand text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+          <div className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-2">
+              <img src="/logo.png" alt="RolsenShop Logo" className="h-9 w-auto object-contain" />
+              <span className="font-heading font-black text-2xl text-brand">
+                RolsenShop
+              </span>
+            </Link>
+            <span className="bg-brand-light text-brand text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider hidden sm:inline-block">
               Afrique de l&apos;Ouest
             </span>
           </div>

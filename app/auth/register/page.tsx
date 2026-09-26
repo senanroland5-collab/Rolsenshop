@@ -75,9 +75,10 @@ export default function RegisterPage() {
     <div className="min-h-screen bg-brand-bg flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="text-center">
-          <Link href="/" className="inline-block">
-            <span className="text-3xl font-bold text-gray-900">
-              Rolsen<span className="text-brand">shop</span>
+          <Link href="/" className="inline-flex items-center gap-2">
+            <img src="/logo.png" alt="RolsenShop Logo" className="h-10 w-auto object-contain" />
+            <span className="text-3xl font-black font-heading text-brand">
+              RolsenShop
             </span>
           </Link>
           <h2 className="mt-4 text-2xl font-extrabold text-gray-900">
