@@ -81,7 +81,7 @@ export default function RegisterPage() {
             </span>
           </Link>
           <h2 className="mt-4 text-2xl font-extrabold text-gray-900">
-            Créez votre catalogue WhatsApp gratuit
+            Créez votre boutique en ligne
           </h2>
           <p className="mt-2 text-sm text-gray-600">
             Commencez à vendre directement sur WhatsApp en moins de 2 minutes
@@ -170,7 +170,7 @@ export default function RegisterPage() {
                 disabled={loading}
                 className="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-brand hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand disabled:opacity-50 transition"
               >
-                {loading ? 'Création de votre boutique...' : 'Lancer ma boutique gratuitement 🚀'}
+                {loading ? 'Création de votre boutique...' : 'Lancer ma boutique gratuitement'}
               </button>
             </div>
           </form>
