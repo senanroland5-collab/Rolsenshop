@@ -3,16 +3,61 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { FiShoppingBag, FiPackage, FiSettings, FiExternalLink, FiLogOut, FiCheckCircle, FiClock, FiPlus, FiEdit2, FiTrash2 } from 'react-icons/fi';
+import { FiShoppingBag, FiPackage, FiSettings, FiExternalLink, FiLogOut, FiCheckCircle, FiClock, FiPlus, FiEdit2, FiTrash2, FiTrendingUp, FiCheck, FiX } from 'react-icons/fi';
 import { MOCK_VENDOR, MOCK_PRODUCTS } from '@/app/lib/store';
 import { Vendor, Product } from '@/app/lib/types';
 import ProductModal from '@/app/components/ProductModal';
+
+interface MockOrder {
+  id: string;
+  customerName: string;
+  customerPhone: string;
+  city: string;
+  itemsCount: number;
+  totalAmount: number;
+  date: string;
+  status: 'initiated' | 'completed';
+}
+
+const INITIAL_ORDERS: MockOrder[] = [
+  {
+    id: 'ord_101',
+    customerName: 'Kouassi Marc',
+    customerPhone: '+229 97 00 11 22',
+    city: 'Cotonou (Cadjehoun)',
+    itemsCount: 2,
+    totalAmount: 7000,
+    date: '2025-01-20T14:30:00.000Z',
+    status: 'completed',
+  },
+  {
+    id: 'ord_102',
+    customerName: 'Aïchatou Bio',
+    customerPhone: '+229 61 44 55 66',
+    city: 'Porto-Novo',
+    itemsCount: 1,
+    totalAmount: 4500,
+    date: '2025-01-22T09:15:00.000Z',
+    status: 'initiated',
+  },
+  {
+    id: 'ord_103',
+    customerName: 'Sègbégnon Fabrice',
+    customerPhone: '+229 95 88 99 00',
+    city: 'Abomey-Calavi',
+    itemsCount: 3,
+    totalAmount: 13500,
+    date: '2025-01-24T16:45:00.000Z',
+    status: 'completed',
+  },
+];
 
 export default function DashboardPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<'products' | 'settings'>('products');
+  const [activeTab, setActiveTab] = useState<'products' | 'orders' | 'settings'>('products');
+  const [orders, setOrders] = useState<MockOrder[]>(INITIAL_ORDERS);
   const [vendor, setVendor] = useState<Vendor>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('vendor_data');
@@ -160,6 +205,17 @@ export default function DashboardPage() {
               </button>
 
               <button
+                onClick={() => setActiveTab('orders')}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition ${
+                  activeTab === 'orders'
+                    ? 'bg-brand text-white shadow-sm font-semibold'
+                    : 'text-gray-600 hover:bg-gray-50'
+                }`}
+              >
+                <FiTrendingUp className="text-lg" /> Commandes & Ventes ({orders.length})
+              </button>
+
+              <button
                 onClick={() => setActiveTab('settings')}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition ${
                   activeTab === 'settings'
@@ -191,7 +247,69 @@ export default function DashboardPage() {
 
           {/* Main Area */}
           <div className="lg:col-span-3">
-            {activeTab === 'settings' ? (
+            {activeTab === 'orders' ? (
+              <div className="space-y-6">
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <div>
+                    <h2 className="text-xl font-bold text-gray-900">Suivi des Commandes WhatsApp</h2>
+                    <p className="text-sm text-gray-500">Consultez les demandes initiées sur le site et validez vos ventes livrées.</p>
+                  </div>
+                  <div className="bg-brand-light/60 text-brand px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2">
+                    <FiTrendingUp className="text-base" />
+                    <span>CA Confirmé : {orders.filter(o => o.status === 'completed').reduce((acc, o) => acc + o.totalAmount, 0).toLocaleString('fr-FR')} FCFA</span>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                  <div className="p-4 border-b border-gray-100 bg-gray-50 flex justify-between items-center text-xs font-bold text-gray-500 uppercase tracking-wider">
+                    <span>Historique des Demandes ({orders.length})</span>
+                    <span>Statut de Règlement</span>
+                  </div>
+
+                  <div className="divide-y divide-gray-100">
+                    {orders.map((order) => (
+                      <div key={order.id} className="p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:bg-gray-50/50 transition">
+                        <div>
+                          <div className="flex items-center gap-2 mb-1">
+                            <h4 className="font-bold text-gray-900 text-sm">{order.customerName}</h4>
+                            <span className="text-xs text-brand font-mono font-medium">{order.customerPhone}</span>
+                          </div>
+                          <p className="text-xs text-gray-500">📍 {order.city} • {order.itemsCount} article(s)</p>
+                          <p className="text-xs text-gray-400 mt-1">📅 {new Date(order.date).toLocaleDateString('fr-FR')} à {new Date(order.date).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}</p>
+                        </div>
+
+                        <div className="flex items-center gap-4 self-end sm:self-auto">
+                          <div className="text-right">
+                            <span className="block text-xs text-gray-400 font-medium uppercase">Montant</span>
+                            <span className="text-base font-black text-brand">{order.totalAmount.toLocaleString('fr-FR')} FCFA</span>
+                          </div>
+
+                          {order.status === 'completed' ? (
+                            <button
+                              onClick={() => {
+                                setOrders(orders.map(o => o.id === order.id ? { ...o, status: 'initiated' } : o));
+                              }}
+                              className="bg-green-100 text-green-800 text-xs font-bold px-3.5 py-2 rounded-xl flex items-center gap-1.5 hover:bg-green-200 transition"
+                            >
+                              <FiCheck className="text-sm" /> Livré & Confirmé
+                            </button>
+                          ) : (
+                            <button
+                              onClick={() => {
+                                setOrders(orders.map(o => o.id === order.id ? { ...o, status: 'completed' } : o));
+                              }}
+                              className="bg-amber-100 text-amber-900 text-xs font-bold px-3.5 py-2 rounded-xl flex items-center gap-1.5 hover:bg-amber-200 transition"
+                            >
+                              <FiClock className="text-sm" /> Valider la Vente
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : activeTab === 'settings' ? (
               <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sm:p-8">
                 <h2 className="text-xl font-bold text-gray-900 mb-2">Paramètres de la Boutique</h2>
                 <p className="text-sm text-gray-500 mb-6">
