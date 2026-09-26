@@ -165,7 +165,7 @@ export default function ShopPage() {
         <main className="max-w-6xl mx-auto px-4 mb-16">
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-lg font-extrabold text-gray-900">
-              Produits disponibles ({products.length})
+              Produits disponibles
             </h3>
           </div>
 

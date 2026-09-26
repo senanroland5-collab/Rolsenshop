@@ -72,8 +72,8 @@ export default function HomePage() {
                 <div className="text-gray-500 text-xs mt-1 font-medium">Commission sur les ventes</div>
               </div>
               <div>
-                <div className="text-2xl sm:text-3xl font-black text-brand">14 Jours</div>
-                <div className="text-gray-500 text-xs mt-1 font-medium">Essai gratuit sans engagement</div>
+                <div className="text-2xl sm:text-3xl font-black text-brand">6 Mois</div>
+                <div className="text-gray-500 text-xs mt-1 font-medium">Formule 6 mois incluse</div>
               </div>
             </div>
           </div>

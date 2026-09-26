@@ -53,7 +53,7 @@ export default function RegisterPage() {
           description: `Bienvenue chez ${storeName} ! Découvrez notre catalogue de produits.`,
           createdAt: new Date().toISOString(),
           subscriptionStatus: 'trial',
-          trialEndDate: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(),
+          trialEndDate: new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toISOString(),
         };
 
         await setDoc(doc(db, 'vendors', uid), vendorData);
