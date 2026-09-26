@@ -10,14 +10,14 @@ export const MOCK_VENDOR: Vendor = {
   logoUrl: '/shops/irashop/irashop-prod-1.jpg',
   createdAt: new Date().toISOString(),
   subscriptionStatus: 'active',
-  trialEndDate: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
+  trialEndDate: new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toISOString(),
 };
 
 export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_1",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Vintage #1",
+    "name": "Tissu Vintage",
     "price": 3500,
     "currency": "FCFA",
     "description": "Tissu Vintage aux motifs graphiques et bruts à fort contraste.",
@@ -31,7 +31,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_2",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Semi-Vintage #2",
+    "name": "Tissu Semi-Vintage",
     "price": 3500,
     "currency": "FCFA",
     "description": "Tissu Semi-Vintage aux dégradés doux et motif tropical fluide.",
@@ -45,7 +45,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_3",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Vintage #3",
+    "name": "Tissu Vintage",
     "price": 3500,
     "currency": "FCFA",
     "description": "Tissu Vintage aux motifs abstraits et géométriques.",
@@ -59,7 +59,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_4",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Semi-Vintage #4",
+    "name": "Tissu Semi-Vintage",
     "price": 3500,
     "currency": "FCFA",
     "description": "Tissu Semi-Vintage avec rendu soyeux et drapé élégant.",
@@ -74,7 +74,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_5",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Vintage #5",
+    "name": "Tissu Vintage",
     "price": 3500,
     "currency": "FCFA",
     "description": "Tissu Vintage aux teintes brutes et textures contrastées.",
@@ -88,7 +88,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_6",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Semi-Vintage #6",
+    "name": "Tissu Semi-Vintage",
     "price": 3500,
     "currency": "FCFA",
     "description": "Tissu Semi-Vintage aux nuances dégradées tropicales.",
@@ -102,7 +102,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_7",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Vintage #7",
+    "name": "Tissu Vintage",
     "price": 3500,
     "currency": "FCFA",
     "description": "Tissu Vintage aux rayures franches et rendu mat.",
@@ -116,7 +116,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_8",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Semi-Vintage #8",
+    "name": "Tissu Semi-Vintage",
     "price": 3500,
     "currency": "FCFA",
     "description": "Tissu Semi-Vintage au toucher fluide et finitions soignées.",
@@ -131,7 +131,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_9",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Vintage #9",
+    "name": "Tissu Vintage",
     "price": 3500,
     "currency": "FCFA",
     "description": "Tissu Vintage traditionnel à fort caractère.",
@@ -145,7 +145,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_10",
     "vendorUid": "vendor_irashop",
-    "name": "Ensemble #10",
+    "name": "Ensemble Moderne",
     "price": 4000,
     "currency": "FCFA",
     "description": "Ensemble de confection soignée et design moderne.",
@@ -159,7 +159,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_11",
     "vendorUid": "vendor_irashop",
-    "name": "Ensemble #11",
+    "name": "Ensemble Élégant",
     "price": 4000,
     "currency": "FCFA",
     "description": "Tenue de qualité supérieure ajustée avec élégance.",
@@ -173,7 +173,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_12",
     "vendorUid": "vendor_irashop",
-    "name": "Ensemble #12",
+    "name": "Ensemble Confort",
     "price": 4000,
     "currency": "FCFA",
     "description": "Tenue moderne et confortable pour toute occasion.",
@@ -188,7 +188,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_13",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Vintage #13",
+    "name": "Tissu Vintage",
     "price": 4500,
     "currency": "FCFA",
     "description": "Tissu Vintage tissé aux motifs géométriques et épurés.",
@@ -202,7 +202,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_14",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Semi-Vintage #14",
+    "name": "Tissu Semi-Vintage",
     "price": 4500,
     "currency": "FCFA",
     "description": "Tissu Semi-Vintage aux nuances douces et toucher soyeux.",
@@ -216,7 +216,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_15",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Vintage #15",
+    "name": "Tissu Vintage",
     "price": 4500,
     "currency": "FCFA",
     "description": "Tissu Vintage haute résistance à fort contraste.",
@@ -230,7 +230,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_16",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Semi-Vintage #16",
+    "name": "Tissu Semi-Vintage",
     "price": 4500,
     "currency": "FCFA",
     "description": "Tissu Semi-Vintage aux dégradés subtils et légers.",
@@ -245,7 +245,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_17",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Vintage #17",
+    "name": "Tissu Vintage",
     "price": 4500,
     "currency": "FCFA",
     "description": "Tissu Vintage aux motifs abstraits et authentiques.",
@@ -259,7 +259,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_18",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Semi-Vintage #18",
+    "name": "Tissu Semi-Vintage",
     "price": 4500,
     "currency": "FCFA",
     "description": "Tissu Semi-Vintage à dominante tropicale et souple.",
@@ -273,7 +273,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_19",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Vintage #19",
+    "name": "Tissu Vintage",
     "price": 4500,
     "currency": "FCFA",
     "description": "Tissu Vintage d'exception aux motifs riches.",
@@ -287,7 +287,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_20",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Semi-Vintage #20",
+    "name": "Tissu Semi-Vintage",
     "price": 4500,
     "currency": "FCFA",
     "description": "Tissu Semi-Vintage fluide et très agréable à porter.",
@@ -302,7 +302,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_21",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Vintage #21",
+    "name": "Tissu Vintage",
     "price": 4500,
     "currency": "FCFA",
     "description": "Tissu Vintage d'inspiration traditionnelle.",
@@ -316,7 +316,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_22",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Semi-Vintage #22",
+    "name": "Tissu Semi-Vintage",
     "price": 4500,
     "currency": "FCFA",
     "description": "Tissu Semi-Vintage finitions premium.",
@@ -330,7 +330,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_23",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Vintage #23",
+    "name": "Tissu Vintage",
     "price": 4500,
     "currency": "FCFA",
     "description": "Tissu Vintage robuste aux couleurs vives.",
@@ -344,7 +344,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_24",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Semi-Vintage #24",
+    "name": "Tissu Semi-Vintage",
     "price": 4500,
     "currency": "FCFA",
     "description": "Tissu Semi-Vintage au drapé souple et raffiné.",
@@ -359,7 +359,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_25",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Vintage #25",
+    "name": "Tissu Vintage",
     "price": 4500,
     "currency": "FCFA",
     "description": "Tissu Vintage aux teintes mates et graphiques.",
@@ -373,7 +373,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_26",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Semi-Vintage #26",
+    "name": "Tissu Semi-Vintage",
     "price": 4500,
     "currency": "FCFA",
     "description": "Tissu Semi-Vintage aux nuances fondues.",
@@ -387,7 +387,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_27",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Vintage #27",
+    "name": "Tissu Vintage",
     "price": 4500,
     "currency": "FCFA",
     "description": "Tissu Vintage haute qualité au rendu authentique.",
@@ -401,7 +401,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_28",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Semi-Vintage #28",
+    "name": "Tissu Semi-Vintage",
     "price": 4500,
     "currency": "FCFA",
     "description": "Tissu Semi-Vintage doux au coucher de soleil.",
@@ -416,7 +416,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_29",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Vintage #29",
+    "name": "Tissu Vintage",
     "price": 4500,
     "currency": "FCFA",
     "description": "Tissu Vintage aux finitions brutes et motifs tribaux.",
@@ -430,7 +430,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_30",
     "vendorUid": "vendor_irashop",
-    "name": "Tissu Semi-Vintage #30",
+    "name": "Tissu Semi-Vintage",
     "price": 4500,
     "currency": "FCFA",
     "description": "Tissu Semi-Vintage souple et soyeux.",
@@ -444,7 +444,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_31",
     "vendorUid": "vendor_irashop",
-    "name": "Ensemble Rayé Haute Qualité #31",
+    "name": "Ensemble Rayé Haute Qualité",
     "price": 9000,
     "currency": "FCFA",
     "description": "Ensemble rayé haute qualité confectionné avec soin.",
@@ -458,7 +458,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_32",
     "vendorUid": "vendor_irashop",
-    "name": "Ensemble Rayé Haute Qualité #32",
+    "name": "Ensemble Rayé Haute Qualité",
     "price": 9000,
     "currency": "FCFA",
     "description": "Ensemble rayé moderne porté avec élégance.",
@@ -473,7 +473,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_33",
     "vendorUid": "vendor_irashop",
-    "name": "Ensemble Rayé Haute Qualité #33",
+    "name": "Ensemble Rayé Haute Qualité",
     "price": 9000,
     "currency": "FCFA",
     "description": "Ensemble haut de gamme aux lignes épurées.",
@@ -487,7 +487,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_34",
     "vendorUid": "vendor_irashop",
-    "name": "Ensemble Rayé Haute Qualité #34",
+    "name": "Ensemble Rayé Haute Qualité",
     "price": 9000,
     "currency": "FCFA",
     "description": "Ensemble rayé élégant pour cérémonies et sorties.",
@@ -501,7 +501,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_35",
     "vendorUid": "vendor_irashop",
-    "name": "Ensemble Rayé Haute Qualité #35",
+    "name": "Ensemble Rayé Haute Qualité",
     "price": 9000,
     "currency": "FCFA",
     "description": "Tenue complète rayée aux finitions supérieures.",
@@ -515,7 +515,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_36",
     "vendorUid": "vendor_irashop",
-    "name": "Ensemble Rayé Haute Qualité #36",
+    "name": "Ensemble Rayé Haute Qualité",
     "price": 9000,
     "currency": "FCFA",
     "description": "Ensemble rayé chic et confortable.",
@@ -530,7 +530,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_37",
     "vendorUid": "vendor_irashop",
-    "name": "Ensemble Rayé Haute Qualité #37",
+    "name": "Ensemble Rayé Haute Qualité",
     "price": 9000,
     "currency": "FCFA",
     "description": "Tenue rayée confectionnée dans un tissu noble.",
@@ -544,7 +544,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_38",
     "vendorUid": "vendor_irashop",
-    "name": "Ensemble Rayé Haute Qualité #38",
+    "name": "Ensemble Rayé Haute Qualité",
     "price": 9000,
     "currency": "FCFA",
     "description": "Ensemble haute couture aux motifs rayés.",
@@ -558,7 +558,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_39",
     "vendorUid": "vendor_irashop",
-    "name": "Ensemble Rayé Haute Qualité #39",
+    "name": "Ensemble Rayé Haute Qualité",
     "price": 9000,
     "currency": "FCFA",
     "description": "Ensemble rayé traditionnel réinventé.",
@@ -572,7 +572,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_40",
     "vendorUid": "vendor_irashop",
-    "name": "Ensemble Rayé Haute Qualité #40",
+    "name": "Ensemble Rayé Haute Qualité",
     "price": 9000,
     "currency": "FCFA",
     "description": "Ensemble rayé moderne et raffiné.",
@@ -587,7 +587,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     "id": "prod_41",
     "vendorUid": "vendor_irashop",
-    "name": "Ensemble Rayé Haute Qualité #41",
+    "name": "Ensemble Rayé Haute Qualité",
     "price": 9000,
     "currency": "FCFA",
     "description": "Ensemble rayé haute qualité au style affirmé.",

@@ -1,10 +1,22 @@
-
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
 
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-heading",
+  weight: ["600", "700", "800"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
-  title: "Rolsenshop — La Marketplace de l'Afrique de l'Ouest",
-  description: "Achetez et vendez en ligne au Bénin. Vendeurs vérifiés, paiement MTN MoMo.",
+  title: "Rolsenshop — Marketplace de Vente Directe sur WhatsApp au Bénin",
+  description: "Catalogue produits en ligne pour commerçants d'Afrique de l'Ouest. Contactez les vendeurs directement sur WhatsApp.",
 };
 
 export default function RootLayout({
@@ -13,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr">
-      <body>
+    <html lang="fr" className={`${plusJakartaSans.variable} ${inter.variable}`}>
+      <body className="font-sans bg-brand-bg text-brand-dark antialiased">
         {children}
       </body>
     </html>

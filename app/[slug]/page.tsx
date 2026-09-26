@@ -175,6 +175,7 @@ export default function ShopPage() {
                 key={product.id}
                 product={product}
                 onAddToCart={handleAddToCart}
+                vendorSlug={vendor.slug}
               />
             ))}
           </div>

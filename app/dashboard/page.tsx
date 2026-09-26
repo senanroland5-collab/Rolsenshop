@@ -125,13 +125,13 @@ export default function DashboardPage() {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="font-bold text-lg">Période d&apos;essai gratuite active</h3>
+                <h3 className="font-bold text-lg">Abonnement actif (Formule 6 mois)</h3>
                 <span className="bg-white/20 text-xs px-2.5 py-0.5 rounded-full font-medium">
                   {daysLeftInTrial} jours restants
                 </span>
               </div>
               <p className="text-sm text-white/80">
-                Votre catalogue est public et recevra toutes les commandes directement sur votre WhatsApp.
+                Votre catalogue est public pour une durée de 6 mois et recevra toutes les commandes directement sur votre WhatsApp.
               </p>
             </div>
           </div>

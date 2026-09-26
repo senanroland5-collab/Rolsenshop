@@ -8,12 +8,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        heading: ["var(--font-heading)", "sans-serif"],
+        sans: ["var(--font-sans)", "sans-serif"],
+      },
       colors: {
         brand: {
           DEFAULT: '#6C4FE0',
-          dark: '#583CBE',
+          dark: '#2D2A26',
           light: '#EAE6FF',
-          bg: '#F8F9FA',
+          bg: '#FDFBF7',
+          cta: '#D97706',
         },
         whatsapp: {
           DEFAULT: '#25D366',

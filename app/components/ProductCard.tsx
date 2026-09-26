@@ -1,24 +1,26 @@
 import React from 'react';
+import Link from 'next/link';
 import { Product } from '@/app/lib/types';
 
 interface ProductCardProps {
   product: Product;
   onAddToCart: (product: Product) => void;
+  vendorSlug?: string;
 }
 
-export default function ProductCard({ product, onAddToCart }: ProductCardProps) {
+export default function ProductCard({ product, onAddToCart, vendorSlug = 'irashop' }: ProductCardProps) {
   return (
     <div className="bg-white rounded-2xl border border-gray-100 shadow-xs hover:shadow-lg hover:-translate-y-1 transition duration-300 overflow-hidden flex flex-col justify-between group">
       <div>
-        {/* Image Container */}
-        <div className="relative aspect-square overflow-hidden bg-gray-50">
+        {/* Clickable Image Container */}
+        <Link href={`/${vendorSlug}/product/${product.id}`} className="block relative aspect-square overflow-hidden bg-gray-50 cursor-pointer">
           <img
             src={product.photoUrl || '/file.svg'}
             alt={`Photo de l'article ${product.name} - ${product.price} FCFA sur Rolsenshop`}
             className="w-full h-full object-cover group-hover:scale-108 transition duration-500 ease-out"
             loading="lazy"
           />
-        </div>
+        </Link>
 
         {/* Info Content */}
         <div className="p-4">
@@ -30,9 +32,11 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
             )}
           </div>
 
-          <h4 className="font-extrabold text-gray-900 text-base line-clamp-1 mb-1.5 group-hover:text-brand transition duration-200">
-            {product.name}
-          </h4>
+          <Link href={`/${vendorSlug}/product/${product.id}`}>
+            <h4 className="font-extrabold text-gray-900 text-base line-clamp-1 mb-1.5 group-hover:text-brand transition duration-200 cursor-pointer">
+              {product.name}
+            </h4>
+          </Link>
 
           <p className="text-xs text-gray-500 line-clamp-2 mb-3 leading-relaxed font-normal">
             {product.description}
