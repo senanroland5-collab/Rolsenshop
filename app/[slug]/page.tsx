@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { FiMessageCircle, FiShoppingBag, FiInfo, FiCheck, FiMapPin, FiStar } from 'react-icons/fi';
+import { FiMessageCircle, FiShoppingBag, FiInfo, FiCheck, FiStar } from 'react-icons/fi';
 import { MOCK_VENDOR, MOCK_PRODUCTS } from '@/app/lib/store';
 import { Vendor, Product, CartItem } from '@/app/lib/types';
 import ProductCard from '@/app/components/ProductCard';
@@ -132,15 +132,6 @@ export default function ShopPage() {
             </div>
 
             <div className="flex items-center gap-3">
-              <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(vendor.storeName + ' Cotonou Bénin')}`}
-                target="_blank"
-                rel="noreferrer"
-                className="hidden md:inline-flex items-center gap-1.5 text-xs font-bold text-gray-700 bg-gray-100 hover:bg-gray-200 px-3.5 py-2 rounded-xl transition"
-              >
-                <FiMapPin className="text-red-500 text-sm" /> Google Maps
-              </a>
-
               <a
                 href={`https://wa.me/${vendor.whatsappNumber}`}
                 target="_blank"
