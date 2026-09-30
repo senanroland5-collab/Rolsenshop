@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { FiShoppingBag, FiPackage, FiSettings, FiExternalLink, FiLogOut, FiCheckCircle, FiClock, FiPlus, FiEdit2, FiTrash2, FiTrendingUp, FiCheck, FiX } from 'react-icons/fi';
+import { FiShoppingBag, FiPackage, FiSettings, FiExternalLink, FiLogOut, FiCheckCircle, FiClock, FiPlus, FiEdit2, FiTrash2, FiTrendingUp, FiCheck, FiMapPin, FiCalendar } from 'react-icons/fi';
 import { MOCK_VENDOR, MOCK_PRODUCTS } from '@/app/lib/store';
 import { Vendor, Product } from '@/app/lib/types';
 import ProductModal from '@/app/components/ProductModal';
@@ -274,8 +274,12 @@ export default function DashboardPage() {
                             <h4 className="font-bold text-gray-900 text-sm">{order.customerName}</h4>
                             <span className="text-xs text-brand font-mono font-medium">{order.customerPhone}</span>
                           </div>
-                          <p className="text-xs text-gray-500">📍 {order.city} • {order.itemsCount} article(s)</p>
-                          <p className="text-xs text-gray-400 mt-1">📅 {new Date(order.date).toLocaleDateString('fr-FR')} à {new Date(order.date).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}</p>
+                          <p className="text-xs text-gray-500 flex items-center gap-1">
+                            <FiMapPin className="text-brand" /> {order.city} • {order.itemsCount} article(s)
+                          </p>
+                          <p className="text-xs text-gray-400 mt-1 flex items-center gap-1">
+                            <FiCalendar /> {new Date(order.date).toLocaleDateString('fr-FR')} à {new Date(order.date).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}
+                          </p>
                         </div>
 
                         <div className="flex items-center gap-4 self-end sm:self-auto">
@@ -439,25 +443,14 @@ export default function DashboardPage() {
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2">
                               <h4 className="font-bold text-gray-900 truncate">{p.name}</h4>
-                              {p.badge === 'best_seller' && (
-                                <span className="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-full">
-                                  Best Seller
-                                </span>
-                              )}
-                              {p.badge === 'new' && (
-                                <span className="bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-0.5 rounded-full">
-                                  Nouveau
-                                </span>
-                              )}
                             </div>
                             <p className="text-sm text-gray-500 truncate">{p.description}</p>
                             <div className="mt-1 flex items-center gap-3 text-xs text-gray-400">
                               <span className="text-brand font-bold text-sm">
                                 {p.price.toLocaleString('fr-FR')} {p.currency}
                               </span>
-                              <span>• ⭐ {p.rating} ({p.ratingCount || 0})</span>
                               {p.isLimitedStock && (
-                                <span className="text-amber-600 font-semibold">⚠️ Stock limité ({p.stockCount})</span>
+                                <span className="text-amber-600 font-semibold">Stock limité ({p.stockCount})</span>
                               )}
                             </div>
                           </div>

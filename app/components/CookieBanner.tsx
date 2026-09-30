@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { FiShield } from 'react-icons/fi';
 
 export default function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false);
@@ -31,7 +32,7 @@ export default function CookieBanner() {
       className="fixed bottom-4 left-4 right-4 md:left-6 md:right-auto md:max-w-md bg-white border border-gray-200 p-5 rounded-2xl shadow-xl z-50 text-xs text-gray-700"
     >
       <div className="font-bold text-gray-900 text-sm mb-1.5 flex items-center gap-1.5">
-        <span>🍪</span> Respect de vos données personnelles
+        <FiShield className="text-brand text-base" /> Respect de vos données personnelles
       </div>
       <p className="mb-3 leading-relaxed">
         Nous utilisons uniquement des cookies nécessaires au fonctionnement de votre panier et à la conformité au Code du Numérique du Bénin (APDP).

@@ -16,7 +16,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Rolsenshop — Marketplace de Vente Directe sur WhatsApp au Bénin",
-  description: "Catalogue produits en ligne pour commerçants d'Afrique de l'Ouest. Contactez les vendeurs directement sur WhatsApp.",
+  description: "Catalogue de produits en ligne relié directement à WhatsApp.",
 };
 
 export default function RootLayout({

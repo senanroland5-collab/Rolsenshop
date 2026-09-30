@@ -3,14 +3,13 @@
 import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { FiMessageCircle, FiShoppingBag, FiInfo, FiCheck, FiStar } from 'react-icons/fi';
+import { FiMessageCircle, FiShoppingBag, FiInfo, FiCheck } from 'react-icons/fi';
 import { MOCK_VENDOR, MOCK_PRODUCTS } from '@/app/lib/store';
 import { Vendor, Product, CartItem } from '@/app/lib/types';
 import ProductCard from '@/app/components/ProductCard';
 import CartDrawer from '@/app/components/CartDrawer';
 import CheckoutModal from '@/app/components/CheckoutModal';
 import PoweredByBadge from '@/app/components/PoweredByBadge';
-import VendorRatingModal from '@/app/components/VendorRatingModal';
 
 export default function ShopPage() {
   const params = useParams();
@@ -41,7 +40,6 @@ export default function ShopPage() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
-  const [isRatingModalOpen, setIsRatingModalOpen] = useState(false);
 
   // Filter products by category tab
   const filteredProducts = products.filter((p) => {
@@ -99,36 +97,27 @@ export default function ShopPage() {
         <header className="bg-white border-b border-gray-100 sticky top-0 z-30 shadow-xs">
           <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <button
-                onClick={() => setIsRatingModalOpen(true)}
-                className="group flex items-center gap-3 text-left focus:outline-none"
-                title="Cliquer pour évaluer ce vendeur"
-              >
+              <div className="flex items-center gap-3 text-left">
                 {vendor.logoUrl ? (
                   <img
                     src={vendor.logoUrl}
                     alt={vendor.storeName}
-                    className="w-12 h-12 rounded-full object-cover border-2 border-brand/20 shadow-xs group-hover:scale-105 transition"
+                    className="w-12 h-12 rounded-full object-cover border-2 border-brand/20 shadow-xs"
                   />
                 ) : (
-                  <div className="w-12 h-12 rounded-full bg-brand text-white font-bold text-xl flex items-center justify-center group-hover:scale-105 transition">
+                  <div className="w-12 h-12 rounded-full bg-brand text-white font-bold text-xl flex items-center justify-center">
                     {vendor.storeName.charAt(0)}
                   </div>
                 )}
                 <div>
-                  <div className="flex items-center gap-2">
-                    <h1 className="text-xl font-extrabold text-gray-900 leading-tight group-hover:text-brand transition">
-                      {vendor.storeName}
-                    </h1>
-                    <span className="inline-flex items-center gap-1 bg-amber-50 text-amber-800 text-[11px] font-bold px-2 py-0.5 rounded-full border border-amber-200/60">
-                      <FiStar className="fill-amber-500 text-amber-500" /> 4.9 (28 avis)
-                    </span>
-                  </div>
+                  <h1 className="text-xl font-extrabold text-gray-900 leading-tight">
+                    {vendor.storeName}
+                  </h1>
                   <p className="text-xs text-gray-500 line-clamp-1 max-w-md">
                     {vendor.description}
                   </p>
                 </div>
-              </button>
+              </div>
             </div>
 
             <div className="flex items-center gap-3">
@@ -197,16 +186,15 @@ export default function ShopPage() {
             <div className="absolute top-0 right-0 w-32 h-32 bg-brand/10 rounded-full blur-2xl pointer-events-none animate-pulse"></div>
 
             <div className="flex items-center gap-3.5 relative z-10">
-              <div className="w-12 h-12 rounded-2xl bg-brand text-white flex items-center justify-center text-2xl shadow-md shrink-0 transition-transform duration-300 hover:scale-110">
-                🛍️
+              <div className="w-12 h-12 rounded-2xl bg-brand text-white flex items-center justify-center text-xl shadow-md shrink-0 transition-transform duration-300 hover:scale-110">
+                <FiShoppingBag />
               </div>
               <div>
                 <h3 className="font-heading text-xl sm:text-2xl font-black text-gray-900 tracking-tight flex items-center gap-2">
                   <span>Sélection Officielle de la Boutique</span>
-                  <span className="w-2 h-2 rounded-full bg-brand animate-ping inline-block"></span>
                 </h3>
                 <p className="text-xs text-gray-500 font-medium mt-0.5">
-                  Parcourez nos tissus & créations d&apos;exception et commandez directement sur WhatsApp
+                  Parcourez nos articles et commandez directement sur WhatsApp
                 </p>
               </div>
             </div>
@@ -293,12 +281,6 @@ export default function ShopPage() {
         onClose={() => setIsCheckoutOpen(false)}
         cartItems={cart}
         vendor={vendor}
-      />
-
-      <VendorRatingModal
-        isOpen={isRatingModalOpen}
-        onClose={() => setIsRatingModalOpen(false)}
-        vendorName={vendor.storeName}
       />
 
       {/* Viral Powered By Badge */}
