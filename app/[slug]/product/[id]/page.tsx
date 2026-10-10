@@ -72,6 +72,14 @@ export default function ProductDetailPage() {
 
   return (
     <div className="min-h-screen bg-brand-bg flex flex-col justify-between font-sans">
+      <head>
+        <title>{`${product.name} | ${vendor.storeName}`}</title>
+        <meta name="description" content={product.description || `Achetez ${product.name} chez ${vendor.storeName} sur WhatsApp.`} />
+        <meta property="og:title" content={`${product.name} - ${product.price.toLocaleString('fr-FR')} ${product.currency}`} />
+        <meta property="og:description" content={product.description || `Commandez ${product.name} sur WhatsApp.`} />
+        <meta property="og:image" content={product.photoUrl} />
+        <meta property="og:type" content="product" />
+      </head>
       <div>
         {/* Header */}
         <header className="bg-white border-b border-gray-100 sticky top-0 z-30 shadow-xs">

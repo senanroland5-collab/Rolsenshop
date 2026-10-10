@@ -10,6 +10,8 @@ import ProductCard from '@/app/components/ProductCard';
 import CartDrawer from '@/app/components/CartDrawer';
 import CheckoutModal from '@/app/components/CheckoutModal';
 import PoweredByBadge from '@/app/components/PoweredByBadge';
+import { trackStoreView } from '@/app/lib/analytics';
+import { useEffect } from 'react';
 
 export default function ShopPage() {
   const params = useParams();
@@ -38,6 +40,12 @@ export default function ShopPage() {
 
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'vintage' | 'semi-vintage'>('all');
   const [cart, setCart] = useState<CartItem[]>([]);
+
+  useEffect(() => {
+    if (vendor?.slug) {
+      trackStoreView(vendor.slug);
+    }
+  }, [vendor?.slug]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 
@@ -92,6 +100,14 @@ export default function ShopPage() {
 
   return (
     <div className="min-h-screen bg-brand-bg flex flex-col justify-between">
+      <head>
+        <title>{`${vendor.storeName} | Catalogue WhatsApp Officiel`}</title>
+        <meta name="description" content={vendor.description || `Commandez directement auprès de ${vendor.storeName} via WhatsApp.`} />
+        <meta property="og:title" content={`${vendor.storeName} - Catalogue WhatsApp`} />
+        <meta property="og:description" content={vendor.description || `Parcourez le catalogue et passez commande directement sur WhatsApp.`} />
+        <meta property="og:image" content={vendor.logoUrl || '/logo.png'} />
+        <meta property="og:type" content="website" />
+      </head>
       <div>
         {/* Header / Store Banner */}
         <header className="bg-white border-b border-gray-100 sticky top-0 z-30 shadow-xs">

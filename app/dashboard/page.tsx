@@ -7,6 +7,8 @@ import { FiShoppingBag, FiPackage, FiSettings, FiExternalLink, FiLogOut, FiCheck
 import { MOCK_VENDOR, MOCK_PRODUCTS } from '@/app/lib/store';
 import { Vendor, Product } from '@/app/lib/types';
 import ProductModal from '@/app/components/ProductModal';
+import QRCodeModal from '@/app/components/QRCodeModal';
+import { FiShare2 } from 'react-icons/fi';
 
 interface MockOrder {
   id: string;
@@ -54,6 +56,7 @@ const INITIAL_ORDERS: MockOrder[] = [
 
 export default function DashboardPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isQrModalOpen, setIsQrModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<'products' | 'orders' | 'settings'>('products');
@@ -242,6 +245,12 @@ export default function DashboardPage() {
                 <p className="text-xs text-gray-500">Numéro WhatsApp</p>
                 <p className="font-medium text-gray-800">+{vendor.whatsappNumber}</p>
               </div>
+              <button
+                onClick={() => setIsQrModalOpen(true)}
+                className="w-full mt-2 bg-brand-light text-brand hover:bg-brand hover:text-white font-bold text-xs py-2.5 px-3 rounded-xl transition flex items-center justify-center gap-2"
+              >
+                <FiShare2 className="text-sm" /> Mon QR Code Boutique
+              </button>
             </div>
           </div>
 
@@ -511,6 +520,12 @@ export default function DashboardPage() {
           </div>
         </div>
       </main>
+
+      <QRCodeModal
+        isOpen={isQrModalOpen}
+        onClose={() => setIsQrModalOpen(false)}
+        vendor={vendor}
+      />
     </div>
   );
 }

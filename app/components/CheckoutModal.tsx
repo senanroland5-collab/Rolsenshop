@@ -3,6 +3,7 @@ import { FiX, FiCheck } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import { Vendor, CartItem, OrderForm } from '@/app/lib/types';
 import { generateWhatsAppLink } from '@/app/lib/whatsapp';
+import { trackWhatsAppOrder } from '@/app/lib/analytics';
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -44,6 +45,8 @@ export default function CheckoutModal({
       neighborhood,
       instructions,
     };
+
+    trackWhatsAppOrder(vendor, cartItems, form);
 
     const link = generateWhatsAppLink(vendor, cartItems, form);
     window.open(link, '_blank');
