@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { FiArrowLeft, FiMessageCircle, FiShoppingBag, FiCheckCircle } from 'react-icons/fi';
-import { MOCK_VENDOR, MOCK_PRODUCTS } from '@/app/lib/store';
+import { getStoreData } from '@/app/lib/store';
 import { Vendor, Product, CartItem } from '@/app/lib/types';
 import { generateWhatsAppLink } from '@/app/lib/whatsapp';
 import CartDrawer from '@/app/components/CartDrawer';
@@ -14,28 +14,19 @@ import PoweredByBadge from '@/app/components/PoweredByBadge';
 export default function ProductDetailPage() {
   const params = useParams();
   const router = useRouter();
-  const slug = params?.slug as string;
+  const slug = (params?.slug as string) || 'irashop';
   const productId = params?.id as string;
 
-  const [vendor] = useState<Vendor>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('vendor_data');
-      if (saved) {
-        try { return JSON.parse(saved); } catch (e) {}
-      }
-    }
-    return MOCK_VENDOR;
-  });
+  const storeData = getStoreData(slug);
 
-  const [products] = useState<Product[]>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('vendor_products');
-      if (saved) {
-        try { return JSON.parse(saved); } catch (e) {}
-      }
-    }
-    return MOCK_PRODUCTS;
-  });
+  const [vendor, setVendor] = useState<Vendor>(() => storeData.vendor);
+  const [products, setProducts] = useState<Product[]>(() => storeData.products);
+
+  useEffect(() => {
+    const data = getStoreData(slug);
+    setVendor(data.vendor);
+    setProducts(data.products);
+  }, [slug]);
 
   const product = products.find((p) => p.id === productId) || products[0];
 
@@ -69,6 +60,8 @@ export default function ProductDetailPage() {
     });
     window.open(url, '_blank');
   };
+
+  if (!product) return null;
 
   return (
     <div className="min-h-screen bg-brand-bg flex flex-col justify-between font-sans">
@@ -122,7 +115,7 @@ export default function ProductDetailPage() {
             <div className="flex flex-col justify-between">
               <div>
                 <div className="inline-block bg-brand-light text-brand text-xs font-extrabold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
-                  {vendor.storeName}
+                  Boutique {vendor.storeName}
                 </div>
 
                 <h1 className="font-heading text-2xl sm:text-3xl font-extrabold text-gray-900 mb-3 tracking-tight">

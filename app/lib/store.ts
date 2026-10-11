@@ -1,7 +1,7 @@
 import { Vendor, Product } from './types';
 
 // Default vendor setting for Irashop (+229 64 40 44 10)
-export const MOCK_VENDOR: Vendor = {
+export const MOCK_VENDOR_IRASHOP: Vendor = {
   uid: 'vendor_irashop',
   storeName: 'Irashop',
   slug: 'irashop',
@@ -13,7 +13,82 @@ export const MOCK_VENDOR: Vendor = {
   trialEndDate: new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toISOString(),
 };
 
-export const MOCK_PRODUCTS: Product[] = [
+// Vendor for +229 / Boutique +229
+export const MOCK_VENDOR_229: Vendor = {
+  uid: 'vendor_229',
+  storeName: '+229',
+  slug: '229',
+  whatsappNumber: '22900000000',
+  description: 'Boutique de friandises, amuses-gueules et arachides grillées au Bénin.',
+  logoUrl: '/shops/plus229/Amuse_geule_3000F.jpg',
+  createdAt: new Date().toISOString(),
+  subscriptionStatus: 'active',
+  trialEndDate: new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toISOString(),
+};
+
+export const MOCK_VENDOR = MOCK_VENDOR_IRASHOP;
+
+export const PRODUCTS_229: Product[] = [
+  {
+    "id": "prod_229_1",
+    "vendorUid": "vendor_229",
+    "name": "Amuse gueule",
+    "price": 3000,
+    "currency": "FCFA",
+    "description": "Amuse gueule traditionnel et croustillant préparé au Bénin.",
+    "photoUrl": "/shops/plus229/Amuse_geule_3000F.jpg",
+    "badge": "best_seller",
+    "rating": 4.9,
+    "ratingCount": 14,
+    "isLimitedStock": false,
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "prod_229_2",
+    "vendorUid": "vendor_229",
+    "name": "Amuse gueule",
+    "price": 3500,
+    "currency": "FCFA",
+    "description": "Amuse gueule format grand bocal, délicieux et croquant.",
+    "photoUrl": "/shops/plus229/amuse_geule_3500F.jpg",
+    "badge": "new",
+    "rating": 5.0,
+    "ratingCount": 9,
+    "isLimitedStock": false,
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "prod_229_3",
+    "vendorUid": "vendor_229",
+    "name": "Amuse gueule rond",
+    "price": 3500,
+    "currency": "FCFA",
+    "description": "Amuse gueule rond croquant en bocal grand format.",
+    "photoUrl": "/shops/plus229/amuse_geule_rond_3500F.jpg",
+    "badge": "none",
+    "rating": 4.8,
+    "ratingCount": 11,
+    "isLimitedStock": false,
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "prod_229_4",
+    "vendorUid": "vendor_229",
+    "name": "Arachide grillé",
+    "price": 2500,
+    "currency": "FCFA",
+    "description": "Arachides grillées sélectionnées en bouteille.",
+    "photoUrl": "/shops/plus229/Arachide_grille_2500F.jpg",
+    "badge": "best_seller",
+    "rating": 4.9,
+    "ratingCount": 20,
+    "isLimitedStock": true,
+    "stockCount": 5,
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  }
+];
+
+export const PRODUCTS_IRASHOP: Product[] = [
   {
     "id": "prod_1",
     "vendorUid": "vendor_irashop",
@@ -599,6 +674,22 @@ export const MOCK_PRODUCTS: Product[] = [
     "createdAt": "2025-01-01T00:00:00.000Z"
   }
 ];
+
+export const MOCK_PRODUCTS = PRODUCTS_IRASHOP;
+
+export const getStoreData = (slug: string) => {
+  const cleanSlug = slug.toLowerCase().replace(/^\+/, '');
+  if (cleanSlug === '229' || cleanSlug === 'plus229') {
+    return {
+      vendor: MOCK_VENDOR_229,
+      products: PRODUCTS_229
+    };
+  }
+  return {
+    vendor: MOCK_VENDOR_IRASHOP,
+    products: PRODUCTS_IRASHOP
+  };
+};
 
 export const formatPrice = (price: number, currency: string = 'FCFA'): string => {
   return `${price.toLocaleString('fr-FR')} ${currency}`;

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { FiMessageCircle, FiShoppingBag, FiInfo, FiCheck } from 'react-icons/fi';
-import { MOCK_VENDOR, MOCK_PRODUCTS } from '@/app/lib/store';
+import { getStoreData } from '@/app/lib/store';
 import { Vendor, Product, CartItem } from '@/app/lib/types';
 import ProductCard from '@/app/components/ProductCard';
 import CartDrawer from '@/app/components/CartDrawer';
@@ -15,30 +15,37 @@ import { useEffect } from 'react';
 
 export default function ShopPage() {
   const params = useParams();
-  const slug = params?.slug as string;
+  const slug = (params?.slug as string) || 'irashop';
+  const storeData = getStoreData(slug);
 
   // Local state for vendor catalog & cart
   const [vendor, setVendor] = useState<Vendor>(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('vendor_data');
+      const saved = localStorage.getItem(`vendor_data_${slug}`);
       if (saved) {
         try { return JSON.parse(saved); } catch (e) {}
       }
     }
-    return MOCK_VENDOR;
+    return storeData.vendor;
   });
 
   const [products, setProducts] = useState<Product[]>(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('vendor_products');
+      const saved = localStorage.getItem(`vendor_products_${slug}`);
       if (saved) {
         try { return JSON.parse(saved); } catch (e) {}
       }
     }
-    return MOCK_PRODUCTS;
+    return storeData.products;
   });
 
-  const [selectedCategory, setSelectedCategory] = useState<'all' | 'vintage' | 'semi-vintage'>('all');
+  useEffect(() => {
+    const data = getStoreData(slug);
+    setVendor(data.vendor);
+    setProducts(data.products);
+  }, [slug]);
+
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [cart, setCart] = useState<CartItem[]>([]);
 
   useEffect(() => {
@@ -51,17 +58,9 @@ export default function ShopPage() {
 
   // Filter products by category tab
   const filteredProducts = products.filter((p) => {
-    if (selectedCategory === 'vintage') {
-      return p.name.toLowerCase().includes('vintage') && !p.name.toLowerCase().includes('semi-vintage');
-    }
-    if (selectedCategory === 'semi-vintage') {
-      return p.name.toLowerCase().includes('semi-vintage');
-    }
-    return true;
+    if (selectedCategory === 'all') return true;
+    return p.name.toLowerCase().includes(selectedCategory);
   });
-
-  const vintageCount = products.filter((p) => p.name.toLowerCase().includes('vintage') && !p.name.toLowerCase().includes('semi-vintage')).length;
-  const semiVintageCount = products.filter((p) => p.name.toLowerCase().includes('semi-vintage')).length;
 
   // Cart helper functions
   const handleAddToCart = (product: Product) => {
@@ -127,7 +126,7 @@ export default function ShopPage() {
                 )}
                 <div>
                   <h1 className="text-xl font-extrabold text-gray-900 leading-tight">
-                    {vendor.storeName}
+                    Boutique {vendor.storeName}
                   </h1>
                   <p className="text-xs text-gray-500 line-clamp-1 max-w-md">
                     {vendor.description}
@@ -207,63 +206,18 @@ export default function ShopPage() {
               </div>
               <div>
                 <h3 className="font-heading text-xl sm:text-2xl font-black text-gray-900 tracking-tight flex items-center gap-2">
-                  <span>Sélection Officielle de la Boutique</span>
+                  <span>Catalogue Officiel de la Boutique {vendor.storeName}</span>
                 </h3>
                 <p className="text-xs text-gray-500 font-medium mt-0.5">
                   Parcourez nos articles et commandez directement sur WhatsApp
                 </p>
               </div>
             </div>
-
-            {/* Interactive Category Tabs */}
-            <div className="flex items-center gap-1.5 bg-gray-100/80 p-1.5 rounded-2xl border border-gray-200/60 text-xs font-bold self-stretch sm:self-auto justify-center relative z-10">
-              <button
-                onClick={() => setSelectedCategory('all')}
-                className={`px-3.5 py-2 rounded-xl transition duration-200 flex items-center gap-1.5 ${
-                  selectedCategory === 'all'
-                    ? 'bg-brand text-white shadow-xs font-black scale-102'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
-                }`}
-              >
-                <span>Tous</span>
-                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${selectedCategory === 'all' ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-700'}`}>
-                  {products.length}
-                </span>
-              </button>
-
-              <button
-                onClick={() => setSelectedCategory('vintage')}
-                className={`px-3.5 py-2 rounded-xl transition duration-200 flex items-center gap-1.5 ${
-                  selectedCategory === 'vintage'
-                    ? 'bg-brand text-white shadow-xs font-black scale-102'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
-                }`}
-              >
-                <span>Vintage</span>
-                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${selectedCategory === 'vintage' ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-700'}`}>
-                  {vintageCount}
-                </span>
-              </button>
-
-              <button
-                onClick={() => setSelectedCategory('semi-vintage')}
-                className={`px-3.5 py-2 rounded-xl transition duration-200 flex items-center gap-1.5 ${
-                  selectedCategory === 'semi-vintage'
-                    ? 'bg-brand text-white shadow-xs font-black scale-102'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
-                }`}
-              >
-                <span>Semi-Vintage</span>
-                <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${selectedCategory === 'semi-vintage' ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-700'}`}>
-                  {semiVintageCount}
-                </span>
-              </button>
-            </div>
           </div>
 
           {filteredProducts.length === 0 ? (
             <div className="bg-white rounded-2xl p-12 text-center text-gray-500 border border-gray-100">
-              Aucun article ne correspond à cette catégorie pour le moment.
+              Aucun article disponible pour le moment.
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
