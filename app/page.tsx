@@ -43,18 +43,26 @@ export default function HomePage() {
               Mettez en avant vos articles, permettez à vos clients de constituer un panier et de vous commander directement via WhatsApp.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 flex-wrap">
               <Link
                 href="/auth/register"
-                className="w-full sm:w-auto bg-brand text-white font-extrabold text-base px-8 py-4 rounded-xl hover:bg-brand-dark transition shadow-md flex items-center justify-center gap-2"
+                className="w-full sm:w-auto bg-brand text-white font-extrabold text-base px-6 py-3.5 rounded-xl hover:bg-brand-dark transition shadow-md flex items-center justify-center gap-2"
               >
                 Lancer ma boutique gratuitement <FiArrowRight className="text-lg" />
               </Link>
+
+              <Link
+                href="/les-croqs-colombe"
+                className="w-full sm:w-auto border border-gray-200 text-gray-800 font-bold text-sm px-5 py-3.5 rounded-xl hover:bg-gray-50 transition flex items-center justify-center gap-2"
+              >
+                <FiShoppingBag className="text-brand" /> Boutique Les croq&apos;s colombe
+              </Link>
+
               <Link
                 href="/irashop"
-                className="w-full sm:w-auto border border-gray-200 text-gray-700 font-bold text-base px-8 py-4 rounded-xl hover:bg-gray-50 transition flex items-center justify-center gap-2"
+                className="w-full sm:w-auto border border-gray-200 text-gray-700 font-bold text-sm px-5 py-3.5 rounded-xl hover:bg-gray-50 transition flex items-center justify-center gap-2"
               >
-                <FiShoppingBag className="text-brand" /> Voir la boutique Irashop
+                <FiShoppingBag className="text-brand" /> Boutique Irashop
               </Link>
             </div>
 
