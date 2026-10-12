@@ -13,12 +13,12 @@ export const MOCK_VENDOR_IRASHOP: Vendor = {
   trialEndDate: new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toISOString(),
 };
 
-// Vendor for Les croq's colombe (+229)
+// Vendor for Les croq's colombe (+229 59 92 99 41)
 export const MOCK_VENDOR_229: Vendor = {
   uid: 'vendor_229',
   storeName: "Les croq's colombe",
   slug: 'les-croqs-colombe',
-  whatsappNumber: '22900000000',
+  whatsappNumber: '22959929941',
   description: 'Boutique de friandises, amuses-gueules et arachides grillées de qualité au Bénin.',
   logoUrl: '/shops/plus229/Amuse_geule_3000F.jpg',
   createdAt: new Date().toISOString(),
