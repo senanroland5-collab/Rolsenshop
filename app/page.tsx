@@ -55,14 +55,14 @@ export default function HomePage() {
                 href="/les-croqs-colombe"
                 className="w-full sm:w-auto border border-gray-200 text-gray-800 font-bold text-sm px-5 py-3.5 rounded-xl hover:bg-gray-50 transition flex items-center justify-center gap-2"
               >
-                <FiShoppingBag className="text-brand" /> Boutique Les croq&apos;s colombe
+                <FiShoppingBag className="text-brand" /> Les croq&apos;s colombe
               </Link>
 
               <Link
                 href="/irashop"
                 className="w-full sm:w-auto border border-gray-200 text-gray-700 font-bold text-sm px-5 py-3.5 rounded-xl hover:bg-gray-50 transition flex items-center justify-center gap-2"
               >
-                <FiShoppingBag className="text-brand" /> Boutique Irashop
+                <FiShoppingBag className="text-brand" /> Irashop
               </Link>
             </div>
 

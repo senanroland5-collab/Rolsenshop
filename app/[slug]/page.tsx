@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { FiMessageCircle, FiShoppingBag, FiInfo, FiCheck } from 'react-icons/fi';
@@ -11,7 +11,6 @@ import CartDrawer from '@/app/components/CartDrawer';
 import CheckoutModal from '@/app/components/CheckoutModal';
 import PoweredByBadge from '@/app/components/PoweredByBadge';
 import { trackStoreView } from '@/app/lib/analytics';
-import { useEffect } from 'react';
 
 export default function ShopPage() {
   const params = useParams();
@@ -126,7 +125,7 @@ export default function ShopPage() {
                 )}
                 <div>
                   <h1 className="text-xl font-extrabold text-gray-900 leading-tight">
-                    Boutique {vendor.storeName}
+                    {vendor.storeName}
                   </h1>
                   <p className="text-xs text-gray-500 line-clamp-1 max-w-md">
                     {vendor.description}
@@ -206,7 +205,7 @@ export default function ShopPage() {
               </div>
               <div>
                 <h3 className="font-heading text-xl sm:text-2xl font-black text-gray-900 tracking-tight flex items-center gap-2">
-                  <span>Catalogue Officiel de la Boutique {vendor.storeName}</span>
+                  <span>Catalogue Officiel de {vendor.storeName}</span>
                 </h3>
                 <p className="text-xs text-gray-500 font-medium mt-0.5">
                   Parcourez nos articles et commandez directement sur WhatsApp

@@ -14,13 +14,13 @@ const config: Config = {
       },
       colors: {
         brand: {
-          DEFAULT: '#0F3E68',  // Deep Navy Blue from RolsenShop logo
-          dark: '#0A2A47',     // Dark Navy Blue
-          navy: '#0F3E68',     // Deep Navy Blue alias
-          cyan: '#176D86',     // Cyan/Teal accent from logo loop
-          light: '#EBF3FA',    // Soft Navy Blue tint
+          DEFAULT: '#10B981',  // Logo Vibrant Emerald Green
+          dark: '#059669',     // Dark Emerald Green
+          navy: '#065F46',     // Forest Emerald Green
+          cyan: '#0D9488',     // Teal Emerald Accent from logo loop
+          light: '#ECFDF5',    // Soft Green tint
           bg: '#F8FAFC',       // Clean light neutral background
-          cta: '#EE7019',      // Vibrant Orange from RolsenShop text/cart
+          cta: '#EE7019',      // Vibrant Orange accent from text/cart
           'cta-hover': '#D85F0E', // Darker Orange hover
         },
         whatsapp: {

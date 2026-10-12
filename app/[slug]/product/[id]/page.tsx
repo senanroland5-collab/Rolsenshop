@@ -115,7 +115,7 @@ export default function ProductDetailPage() {
             <div className="flex flex-col justify-between">
               <div>
                 <div className="inline-block bg-brand-light text-brand text-xs font-extrabold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
-                  Boutique {vendor.storeName}
+                  {vendor.storeName}
                 </div>
 
                 <h1 className="font-heading text-2xl sm:text-3xl font-extrabold text-gray-900 mb-3 tracking-tight">
