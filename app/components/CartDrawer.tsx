@@ -25,11 +25,11 @@ export default function CartDrawer({
   );
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-black/40 backdrop-blur-xs">
-      <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between">
+    <div className="fixed inset-0 z-50 overflow-hidden pointer-events-none">
+      <div className="absolute inset-y-0 right-0 max-w-full flex pl-10 pointer-events-none">
+        <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between pointer-events-auto border-l border-gray-200">
           {/* Header */}
-          <div className="p-5 border-b border-gray-100 flex items-center justify-between">
+          <div className="p-5 border-b border-gray-100 flex items-center justify-between bg-white">
             <div className="flex items-center gap-2">
               <FiShoppingBag className="text-xl text-brand" />
               <h3 className="font-bold text-gray-900 text-lg">Mon Panier</h3>
@@ -39,17 +39,17 @@ export default function CartDrawer({
             </div>
             <button
               onClick={onClose}
-              className="p-2 text-gray-400 hover:text-gray-600 bg-gray-100 rounded-full"
+              className="p-2 text-gray-400 hover:text-gray-600 bg-gray-100 rounded-full transition"
             >
               <FiX className="text-lg" />
             </button>
           </div>
 
           {/* Cart Items List */}
-          <div className="p-5 flex-1 overflow-y-auto divide-y divide-gray-100">
+          <div className="p-5 flex-1 overflow-y-auto divide-y divide-gray-100 bg-white">
             {cartItems.length === 0 ? (
               <div className="text-center py-16 text-gray-400 space-y-3">
-                <FiShoppingBag className="text-4xl mx-auto stroke-1" />
+                <FiShoppingBag className="text-4xl mx-auto stroke-1 text-gray-300" />
                 <p className="text-sm font-medium">Votre panier est vide</p>
                 <p className="text-xs text-gray-400">
                   Ajoutez des articles depuis la vitrine pour passer commande.
