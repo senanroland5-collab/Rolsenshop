@@ -13,13 +13,13 @@ export const MOCK_VENDOR_IRASHOP: Vendor = {
   trialEndDate: new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toISOString(),
 };
 
-// Vendor for +229 / Boutique +229
+// Vendor for Les croq's colombe (+229)
 export const MOCK_VENDOR_229: Vendor = {
   uid: 'vendor_229',
-  storeName: '+229',
-  slug: '229',
+  storeName: "Les croq's colombe",
+  slug: 'les-croqs-colombe',
   whatsappNumber: '22900000000',
-  description: 'Boutique de friandises, amuses-gueules et arachides grillées au Bénin.',
+  description: 'Boutique de friandises, amuses-gueules et arachides grillées de qualité au Bénin.',
   logoUrl: '/shops/plus229/Amuse_geule_3000F.jpg',
   createdAt: new Date().toISOString(),
   subscriptionStatus: 'active',
@@ -35,7 +35,7 @@ export const PRODUCTS_229: Product[] = [
     "name": "Amuse gueule",
     "price": 3000,
     "currency": "FCFA",
-    "description": "Amuse gueule traditionnel et croustillant préparé au Bénin.",
+    "description": "Amuse gueule traditionnel et croustillant préparé au Bénin par Les croq's colombe.",
     "photoUrl": "/shops/plus229/Amuse_geule_3000F.jpg",
     "badge": "best_seller",
     "rating": 4.9,
@@ -49,7 +49,7 @@ export const PRODUCTS_229: Product[] = [
     "name": "Amuse gueule",
     "price": 3500,
     "currency": "FCFA",
-    "description": "Amuse gueule format grand bocal, délicieux et croquant.",
+    "description": "Amuse gueule format grand bocal, délicieux et croquant de chez Les croq's colombe.",
     "photoUrl": "/shops/plus229/amuse_geule_3500F.jpg",
     "badge": "new",
     "rating": 5.0,
@@ -63,7 +63,7 @@ export const PRODUCTS_229: Product[] = [
     "name": "Amuse gueule rond",
     "price": 3500,
     "currency": "FCFA",
-    "description": "Amuse gueule rond croquant en bocal grand format.",
+    "description": "Amuse gueule rond croquant en bocal grand format par Les croq's colombe.",
     "photoUrl": "/shops/plus229/amuse_geule_rond_3500F.jpg",
     "badge": "none",
     "rating": 4.8,
@@ -77,7 +77,7 @@ export const PRODUCTS_229: Product[] = [
     "name": "Arachide grillé",
     "price": 2500,
     "currency": "FCFA",
-    "description": "Arachides grillées sélectionnées en bouteille.",
+    "description": "Arachides grillées sélectionnées en bouteille par Les croq's colombe.",
     "photoUrl": "/shops/plus229/Arachide_grille_2500F.jpg",
     "badge": "best_seller",
     "rating": 4.9,
@@ -679,7 +679,7 @@ export const MOCK_PRODUCTS = PRODUCTS_IRASHOP;
 
 export const getStoreData = (slug: string) => {
   const cleanSlug = slug.toLowerCase().replace(/^\+/, '');
-  if (cleanSlug === '229' || cleanSlug === 'plus229') {
+  if (cleanSlug === '229' || cleanSlug === 'plus229' || cleanSlug === 'les-croqs-colombe') {
     return {
       vendor: MOCK_VENDOR_229,
       products: PRODUCTS_229
