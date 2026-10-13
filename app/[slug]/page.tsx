@@ -3,12 +3,13 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { FiMessageCircle, FiShoppingBag, FiInfo, FiCheck } from 'react-icons/fi';
+import { FiMessageCircle, FiShoppingBag, FiInfo, FiCheck, FiUser } from 'react-icons/fi';
 import { getStoreData } from '@/app/lib/store';
 import { Vendor, Product, CartItem } from '@/app/lib/types';
 import ProductCard from '@/app/components/ProductCard';
 import CartDrawer from '@/app/components/CartDrawer';
 import CheckoutModal from '@/app/components/CheckoutModal';
+import VendorProfileModal from '@/app/components/VendorProfileModal';
 import PoweredByBadge from '@/app/components/PoweredByBadge';
 import { trackStoreView } from '@/app/lib/analytics';
 
@@ -54,6 +55,8 @@ export default function ShopPage() {
   }, [vendor?.slug]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const [addedNotification, setAddedNotification] = useState<string | null>(null);
 
   // Filter products by category tab
   const filteredProducts = products.filter((p) => {
@@ -61,7 +64,7 @@ export default function ShopPage() {
     return p.name.toLowerCase().includes(selectedCategory);
   });
 
-  // Cart helper functions
+  // Cart helper functions: Add to cart without forcing cart drawer auto-opening
   const handleAddToCart = (product: Product) => {
     setCart((prevCart) => {
       const existing = prevCart.find((item) => item.product.id === product.id);
@@ -74,7 +77,12 @@ export default function ShopPage() {
       }
       return [...prevCart, { product, quantity: 1 }];
     });
-    setIsCartOpen(true);
+
+    // Show temporary toast feedback instead of blocking drawer modal
+    setAddedNotification(`"${product.name}" ajouté au panier !`);
+    setTimeout(() => {
+      setAddedNotification(null);
+    }, 2500);
   };
 
   const handleUpdateQuantity = (productId: string, delta: number) => {
@@ -98,25 +106,20 @@ export default function ShopPage() {
 
   return (
     <div className="min-h-screen bg-brand-bg flex flex-col justify-between">
-      <head>
-        <title>{`${vendor.storeName} | Catalogue WhatsApp Officiel`}</title>
-        <meta name="description" content={vendor.description || `Commandez directement auprès de ${vendor.storeName} via WhatsApp.`} />
-        <meta property="og:title" content={`${vendor.storeName} - Catalogue WhatsApp`} />
-        <meta property="og:description" content={vendor.description || `Parcourez le catalogue et passez commande directement sur WhatsApp.`} />
-        <meta property="og:image" content={vendor.logoUrl || '/logo.png'} />
-        <meta property="og:type" content="website" />
-      </head>
       <div>
         {/* Header / Store Banner */}
         <header className="bg-white border-b border-gray-100 sticky top-0 z-30 shadow-xs">
           <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-3 text-left">
+              <button
+                onClick={() => setIsProfileModalOpen(true)}
+                className="flex items-center gap-3 text-left group hover:opacity-90 transition"
+              >
                 {vendor.logoUrl ? (
                   <img
                     src={vendor.logoUrl}
                     alt={vendor.storeName}
-                    className="w-12 h-12 rounded-full object-cover border-2 border-brand/20 shadow-xs"
+                    className="w-12 h-12 rounded-full object-cover border-2 border-brand/20 shadow-xs group-hover:border-brand transition"
                   />
                 ) : (
                   <div className="w-12 h-12 rounded-full bg-brand text-white font-bold text-xl flex items-center justify-center">
@@ -124,25 +127,26 @@ export default function ShopPage() {
                   </div>
                 )}
                 <div>
-                  <h1 className="text-xl font-extrabold text-gray-900 leading-tight">
-                    {vendor.storeName}
+                  <h1 className="text-xl font-extrabold text-gray-900 leading-tight group-hover:text-brand transition flex items-center gap-1.5">
+                    <span>{vendor.storeName}</span>
+                    <span className="text-[10px] font-bold text-brand bg-brand-light px-2 py-0.5 rounded-md">
+                      Profil
+                    </span>
                   </h1>
                   <p className="text-xs text-gray-500 line-clamp-1 max-w-md">
                     {vendor.description}
                   </p>
                 </div>
-              </div>
+              </button>
             </div>
 
             <div className="flex items-center gap-3">
-              <a
-                href={`https://wa.me/${vendor.whatsappNumber}`}
-                target="_blank"
-                rel="noreferrer"
-                className="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold text-gray-700 bg-gray-100 hover:bg-gray-200 px-3.5 py-2 rounded-xl transition"
+              <button
+                onClick={() => setIsProfileModalOpen(true)}
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-gray-700 bg-gray-100 hover:bg-gray-200 px-3.5 py-2 rounded-xl transition"
               >
-                <FiMessageCircle className="text-brand text-sm" /> Contact
-              </a>
+                <FiUser className="text-brand text-sm" /> Voir Profil
+              </button>
 
               <button
                 onClick={() => setIsCartOpen(true)}
@@ -151,7 +155,7 @@ export default function ShopPage() {
                 <FiShoppingBag className="text-lg" />
                 <span className="hidden sm:inline">Panier</span>
                 {totalCartCount > 0 && (
-                  <span className="bg-white text-brand text-xs font-black w-5 h-5 rounded-full flex items-center justify-center">
+                  <span className="bg-white text-brand text-xs font-black w-5 h-5 rounded-full flex items-center justify-center animate-bounce">
                     {totalCartCount}
                   </span>
                 )}
@@ -159,6 +163,20 @@ export default function ShopPage() {
             </div>
           </div>
         </header>
+
+        {/* Toast Toast Notification when adding items */}
+        {addedNotification && (
+          <div className="fixed bottom-20 right-6 z-50 bg-gray-900 text-white font-bold text-xs px-4 py-3 rounded-2xl shadow-xl border border-gray-800 flex items-center gap-2 animate-bounce">
+            <FiCheck className="text-emerald-400 text-base" />
+            <span>{addedNotification}</span>
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="ml-2 bg-brand px-2.5 py-1 rounded-lg text-white text-[10px] uppercase font-black tracking-wider hover:bg-brand-dark transition"
+            >
+              Voir
+            </button>
+          </div>
+        )}
 
         {/* Store Banner Notice if Expired */}
         {isExpired && (
@@ -249,6 +267,12 @@ export default function ShopPage() {
         isOpen={isCheckoutOpen}
         onClose={() => setIsCheckoutOpen(false)}
         cartItems={cart}
+        vendor={vendor}
+      />
+
+      <VendorProfileModal
+        isOpen={isProfileModalOpen}
+        onClose={() => setIsProfileModalOpen(false)}
         vendor={vendor}
       />
 

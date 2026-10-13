@@ -3,12 +3,13 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { FiArrowLeft, FiMessageCircle, FiShoppingBag, FiCheckCircle } from 'react-icons/fi';
+import { FiArrowLeft, FiMessageCircle, FiShoppingBag, FiCheckCircle, FiUser } from 'react-icons/fi';
 import { getStoreData } from '@/app/lib/store';
 import { Vendor, Product, CartItem } from '@/app/lib/types';
 import { generateWhatsAppLink } from '@/app/lib/whatsapp';
 import CartDrawer from '@/app/components/CartDrawer';
 import CheckoutModal from '@/app/components/CheckoutModal';
+import VendorProfileModal from '@/app/components/VendorProfileModal';
 import PoweredByBadge from '@/app/components/PoweredByBadge';
 
 export default function ProductDetailPage() {
@@ -33,6 +34,7 @@ export default function ProductDetailPage() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
   const handleAddToCart = () => {
     setCart((prevCart) => {
@@ -46,7 +48,6 @@ export default function ProductDetailPage() {
       }
       return [...prevCart, { product, quantity: 1 }];
     });
-    setIsCartOpen(true);
   };
 
   const handleDirectWhatsAppContact = () => {
@@ -65,14 +66,6 @@ export default function ProductDetailPage() {
 
   return (
     <div className="min-h-screen bg-brand-bg flex flex-col justify-between font-sans">
-      <head>
-        <title>{`${product.name} | ${vendor.storeName}`}</title>
-        <meta name="description" content={product.description || `Achetez ${product.name} chez ${vendor.storeName} sur WhatsApp.`} />
-        <meta property="og:title" content={`${product.name} - ${product.price.toLocaleString('fr-FR')} ${product.currency}`} />
-        <meta property="og:description" content={product.description || `Commandez ${product.name} sur WhatsApp.`} />
-        <meta property="og:image" content={product.photoUrl} />
-        <meta property="og:type" content="product" />
-      </head>
       <div>
         {/* Header */}
         <header className="bg-white border-b border-gray-100 sticky top-0 z-30 shadow-xs">
@@ -84,18 +77,27 @@ export default function ProductDetailPage() {
               <FiArrowLeft className="text-lg" /> Retour au catalogue
             </Link>
 
-            <button
-              onClick={() => setIsCartOpen(true)}
-              className="relative bg-brand text-white font-bold text-sm px-4 py-2.5 rounded-xl hover:bg-brand-dark transition shadow-xs flex items-center gap-2"
-            >
-              <FiShoppingBag className="text-lg" />
-              <span className="hidden sm:inline">Panier</span>
-              {cart.length > 0 && (
-                <span className="bg-white text-brand text-xs font-black w-5 h-5 rounded-full flex items-center justify-center">
-                  {cart.reduce((a, b) => a + b.quantity, 0)}
-                </span>
-              )}
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setIsProfileModalOpen(true)}
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-gray-700 bg-gray-100 hover:bg-gray-200 px-3.5 py-2 rounded-xl transition"
+              >
+                <FiUser className="text-brand text-sm" /> Profil Vendeur
+              </button>
+
+              <button
+                onClick={() => setIsCartOpen(true)}
+                className="relative bg-brand text-white font-bold text-sm px-4 py-2.5 rounded-xl hover:bg-brand-dark transition shadow-xs flex items-center gap-2"
+              >
+                <FiShoppingBag className="text-lg" />
+                <span className="hidden sm:inline">Panier</span>
+                {cart.length > 0 && (
+                  <span className="bg-white text-brand text-xs font-black w-5 h-5 rounded-full flex items-center justify-center">
+                    {cart.reduce((a, b) => a + b.quantity, 0)}
+                  </span>
+                )}
+              </button>
+            </div>
           </div>
         </header>
 
@@ -114,9 +116,12 @@ export default function ProductDetailPage() {
             {/* Info & Action Section */}
             <div className="flex flex-col justify-between">
               <div>
-                <div className="inline-block bg-brand-light text-brand text-xs font-extrabold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
-                  {vendor.storeName}
-                </div>
+                <button
+                  onClick={() => setIsProfileModalOpen(true)}
+                  className="inline-block bg-brand-light text-brand text-xs font-extrabold px-3 py-1 rounded-full mb-3 uppercase tracking-wider hover:bg-brand hover:text-white transition"
+                >
+                  {vendor.storeName} (Voir le profil)
+                </button>
 
                 <h1 className="font-heading text-2xl sm:text-3xl font-extrabold text-gray-900 mb-3 tracking-tight">
                   {product.name}
@@ -200,6 +205,12 @@ export default function ProductDetailPage() {
         isOpen={isCheckoutOpen}
         onClose={() => setIsCheckoutOpen(false)}
         cartItems={cart}
+        vendor={vendor}
+      />
+
+      <VendorProfileModal
+        isOpen={isProfileModalOpen}
+        onClose={() => setIsProfileModalOpen(false)}
         vendor={vendor}
       />
 
