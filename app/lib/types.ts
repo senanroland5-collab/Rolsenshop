@@ -3,6 +3,7 @@ export interface Vendor {
   storeName: string;
   slug: string;
   whatsappNumber: string;
+  email?: string;
   description: string;
   logoUrl?: string;
   createdAt: string;
